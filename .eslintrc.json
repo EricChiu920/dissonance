@@ -20,6 +20,7 @@
         "react"
     ],
     "rules": {
-        "arrow-body-style": ["error", "always"]
+        "arrow-body-style": 0,
+        "react/prop-types": 0
     }
 }
