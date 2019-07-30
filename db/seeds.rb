@@ -8,5 +8,5 @@
 
 User.destroy_all
 
-eric = User.create!({username: 'Eric', password: 'hunter12'})
-guest = User.create!({username: 'guest', password: 'hunter12'})
+eric = User.create!({username: 'Eric', email: 'eric@a.c', password: 'hunter12'})
+guest = User.create!({username: 'guest', email: 'guest@mail.com', password: 'hunter12'})
