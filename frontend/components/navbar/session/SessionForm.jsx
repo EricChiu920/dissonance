@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SessionFormMessage from './SessionFormMessage';
 import OtherFormMessage from './OtherFormMessage';
 import SessionErrors from './SessionErrors';
@@ -49,6 +50,10 @@ class SessionForm extends React.Component {
       </label>
     );
 
+    const forgotPassword = formType === 'Signup' ? null : (
+      <Link to="/signup" className="forgot-password-link">Forgot your password?</Link>
+    );
+
     return (
       <div className="session-form centered">
         <SessionErrors errors={sessionErrors} />
@@ -63,6 +68,7 @@ class SessionForm extends React.Component {
             PASSWORD
             <input onChange={this.updateInput('password')} type="password" value={password} required />
           </label>
+          {forgotPassword}
           <input type="submit" value={formType} />
         </form>
         <OtherFormMessage formType={formType} />

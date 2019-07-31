@@ -4,9 +4,7 @@ $input-height: 40px;
 $main-width: 82%;
 
 $small-font-size: 13.5px;
-
 $small-margin: 10px;
-$large-margin: 12px;
 
 .main-session-message {
   display: flex;
@@ -25,7 +23,6 @@ $large-margin: 12px;
   color: $grey;
   font-size: 16px;
   user-select: none;
-  margin-bottom: 15px;
 }
 
 .other-form-message {
@@ -33,15 +30,33 @@ $large-margin: 12px;
   color: $grey;
   font-size: $small-font-size;
   user-select: none;
-}
-
-.other-form-link {
+  display: flex;
   margin: 0 auto;
   width: $main-width;
+}
+
+.other-signup-form-link {
   color: $blue;
-  margin-bottom: 35px;
-  display: flex;
   font-size: $small-font-size;
+  margin-left: 5px;
+  // margin-bottom: 20px;
+}
+
+.other-login-form-link {
+  color: $blue;
+  font-size: $small-font-size;
+  margin-left: 5px;
+  display: flex;
+  width: $main-width;
+  margin: 0 auto;
+}
+
+.forgot-password-link {
+  display: flex;
+  color: $blue;
+  font-size: $small-font-size;
+  width: $main-width;
+  margin: 0 auto;
 }
 
 .session-form {
@@ -50,6 +65,7 @@ $large-margin: 12px;
   flex-direction: column;
   background-color: $light-black;
   border-radius: 5px;
+  padding-bottom: 35px;
 }
 
 .session-form label {
@@ -57,7 +73,7 @@ $large-margin: 12px;
   display: flex;
   flex-direction: column;
   width: $main-width;
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   font-size: $small-font-size;
 }
 
@@ -71,8 +87,7 @@ $large-margin: 12px;
   background-color: $black;
   padding-left: 10px;
   border: 1px solid $dark-black;
-  margin-top: $small-margin;
-  margin-bottom: $large-margin;
+  margin: $small-margin 0;
   font-size: 17px;
   font-weight: 300;
   color: white;
@@ -93,8 +108,7 @@ $large-margin: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px auto $small-margin auto;
-  // margin-bottom: $small-margin;
+  margin: 25px auto $small-margin auto;
   background-color: $blue;
   border: 1px solid $blue;
   height: $input-height;
