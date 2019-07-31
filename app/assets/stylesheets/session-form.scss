@@ -59,8 +59,9 @@ $large-margin: 12px;
   flex-direction: column;
   background-color: $light-black;
   border-radius: 5px;
-  margin-left: 20%;
-  margin-right: auto;
+  margin: auto auto 25% auto;
+  // margin-left: 25%;
+  // margin-right: auto;
 }
 
 .session-form label {
