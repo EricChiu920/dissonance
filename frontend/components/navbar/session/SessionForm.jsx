@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SessionFormMessage from './SessionFormMessage';
 import OtherFormMessage from './OtherFormMessage';
 import SessionErrors from './SessionErrors';
@@ -15,6 +14,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   componentWillUnmount() {
@@ -39,6 +39,13 @@ class SessionForm extends React.Component {
       .then(() => history.push('/'));
   }
 
+  guestLogin(e) {
+    this.setState({
+      email: 'guest@mail.com',
+      password: 'hunter12',
+    }, () => this.handleSubmit(e));
+  }
+
   render() {
     const { username, email, password } = this.state;
     const { formType, sessionErrors } = this.props;
@@ -51,7 +58,9 @@ class SessionForm extends React.Component {
     );
 
     const forgotPassword = formType === 'Signup' ? null : (
-      <Link to="/signup" className="forgot-password-link">Forgot your password?</Link>
+      <div className="guest-login-link">
+        <button onClick={this.guestLogin} type="button">Guest Login</button>
+      </div>
     );
 
     return (

@@ -51,12 +51,17 @@ $small-margin: 10px;
   margin: 0 auto;
 }
 
-.forgot-password-link {
+.guest-login-link {
   display: flex;
-  color: $blue;
-  font-size: $small-font-size;
   width: $main-width;
   margin: 0 auto;
+}
+
+.guest-login-link button {
+  font-size: $small-font-size;
+  color: $blue;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 
 .session-form {
