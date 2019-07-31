@@ -1,4 +1,6 @@
 import React from 'react';
+import SessionFormMessage from './SessionFormMessage';
+import OtherFormMessage from './OtherFormMessage';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -22,7 +24,8 @@ class SessionForm extends React.Component {
   render() {
     const { username, email, password } = this.state;
     const { formType } = this.props;
-    const { usernameField } = formType !== 'Signup' ? null : (
+
+    const usernameField = formType !== 'Signup' ? null : (
       <label htmlFor="username">
         USERNAME
         <input onChange={this.updateInput('username')} type="text" value={username} />
@@ -30,18 +33,22 @@ class SessionForm extends React.Component {
     );
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="email">
-          EMAIL
-          <input onChange={this.updateInput('email')} type="text" value={email} />
-        </label>
-        {usernameField}
-        <label htmlFor="password">
-          PASSWORD
-          <input onChange={this.updateInput('password')} type="text" value={password} />
-        </label>
-        <input type="submit" value={formType} />
-      </form>
+      <div className="session-form">
+        <SessionFormMessage formType={formType} />
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="email">
+            EMAIL
+            <input onChange={this.updateInput('email')} type="text" value={email} />
+          </label>
+          {usernameField}
+          <label htmlFor="password">
+            PASSWORD
+            <input onChange={this.updateInput('password')} type="text" value={password} />
+          </label>
+          <input type="submit" value={formType} />
+        </form>
+        <OtherFormMessage formType={formType} />
+      </div>
     );
   }
 }

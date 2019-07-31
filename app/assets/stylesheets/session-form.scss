@@ -1,0 +1,113 @@
+$input-height: 40px;
+$main-width: 85%;
+
+$small-font-size: 13.5px;
+
+$white: rgb(236, 232, 232);
+$dark-white: rgb(202, 199, 199);
+
+$blue: rgb(118, 151, 223);
+$grey: rgba(146, 144, 144, 0.8);
+$gray: $grey;
+
+$light-black: rgb(55, 55, 55);
+$black: rgb(44, 44, 44);
+$dark-black: rgb(21, 21, 21);
+
+$small-margin: 10px;
+$large-margin: 12px;
+
+.main-session-message {
+  display: flex;
+  color: $white;
+  font-size: 30px;
+  justify-content: center;
+  margin-top: 35px;
+  user-select: none;
+  margin-bottom: 15px;
+  font-weight: 150;
+}
+
+.secondary-session-message {
+  display: flex;
+  justify-content: center;
+  color: $grey;
+  font-size: 16px;
+  user-select: none;
+  margin-bottom: 15px;
+}
+
+.other-form-message {
+  margin-right: 5px;
+  color: $grey;
+  font-size: $small-font-size;
+  user-select: none;
+}
+
+.other-form-link {
+  margin: 0 auto;
+  width: $main-width;
+  color: $blue;
+  margin-bottom: 30px;
+  display: flex;
+  font-size: $small-font-size;
+}
+
+.session-form {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  background-color: $light-black;
+  border-radius: 5px;
+  margin-left: 20%;
+  margin-right: auto;
+}
+
+.session-form label {
+  color: $dark-white;
+  display: flex;
+  flex-direction: column;
+  width: $main-width;
+  margin: 0 auto;
+  font-size: $small-font-size;
+}
+
+.session-form label input {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-self: center;
+  height: $input-height;
+  border-radius: 3px;
+  background-color: $black;
+  padding-left: 10px;
+  border: 1px solid $dark-black;
+  margin-top: $small-margin;
+  margin-bottom: $large-margin;
+  font-size: 16px;
+  font-weight: 300;
+  caret-color: white;
+}
+
+.session-form label input:hover {
+  border: 1px solid black;
+}
+
+.session-form label input:focus {
+  border: 1px solid $blue;
+}
+
+.session-form form > input {
+  width: $main-width;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: $blue;
+  border: 1px solid $blue;
+  height: $input-height;
+  margin-bottom: $small-margin;
+  color: white;
+  font-size: 16px;
+}
