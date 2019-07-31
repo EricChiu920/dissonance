@@ -7,8 +7,9 @@ import SignupFormContainer from './navbar/session/SignupFormContainer';
 const App = () => (
   <>
     <header>
-      <h1>Hello from the App component... dissonance!!!</h1>
-      <NavbarContainer />
+      <nav className="navbar">
+        <Route exact path="/" component={NavbarContainer} />
+      </nav>
     </header>
     <Route path="/login" component={LoginFormContainer} />
     <Route path="/signup" component={SignupFormContainer} />

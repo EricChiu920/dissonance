@@ -1,0 +1,22 @@
+@import './util/branding.scss';
+
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  height: 55px;
+  margin-top: 10px;
+}
+
+.session-form-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 10px 20px;
+  color: $dark-white;
+  width: 80px;
+  border: 2px solid $dark-white;
+  font-size: 12px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0)
+}
