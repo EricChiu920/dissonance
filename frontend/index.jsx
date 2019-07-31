@@ -7,7 +7,21 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
-  store = configureStore();
+
+  if (window.currentUser) {
+    const { id } = window.currentUser;
+
+    const preloadedState = {
+      entities: {
+        users: { [id]: window.currentUser },
+      },
+      session: { id },
+    };
+
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
 
   /* TESTING */
   window.login = login;

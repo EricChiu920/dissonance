@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between; 
   height: 55px;
-  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .session-form-link {
@@ -19,4 +19,8 @@
   font-size: 12px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0)
+}
+
+.session-form-link:hover {
+  border-color: white;
 }
