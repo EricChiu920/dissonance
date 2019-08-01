@@ -3,8 +3,15 @@
 .navbar {
   display: flex;
   justify-content: space-between; 
-  height: 55px;
-  padding-top: 10px;
+  height: 50px;
+  padding-top: 12px;
+
+  img {
+    margin-left: -55px;
+  }
+}
+
+.navbar img {
 }
 
 .session-form-link {
@@ -18,9 +25,9 @@
   border: 2px solid $dark-white;
   font-size: 12px;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0)
-}
+  background-color: rgba(0, 0, 0, 0);
 
-.session-form-link:hover {
-  border-color: white;
+  &:hover {
+    border-color: white;
+  }
 }
