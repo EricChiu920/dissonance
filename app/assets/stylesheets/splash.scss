@@ -2,7 +2,13 @@
 
 .splash-background {
   background-color: $black;
-  height: 100%;
+}
+
+.splash-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
 .splash-images-container {
@@ -17,37 +23,37 @@
 }
 
 .monitor {
-  top: 419px;
-  left: 663px;
+  top: 129px;
+  left: 710px;
 }
 
 .disc {
-  top: 785px;
-  left: 1376px;
+  top: 495px;
+  left: 1423px;
 }
 
 .square-phone {
-  top: 633px;
-  left: 405px;
+  top: 343px;
+  left: 452px;
 }
 
 .round-phone {
-  top: 638px;
-  left: 551px;
+  top: 348px;
+  left: 598px;
 }
 
 .game-controller {
-  top: 779px;
-  left: 698px;
+  top: 489px;
+  left: 745px;
 }
 
 .laptop {
-  top: 539px;
-  left: 949px;
+  top: 249px;
+  left: 996px;
 }
 
 .headphones {
-  top: 523px;
-  left: 1241px;
+  top: 233px;
+  left: 1288px;
   height: 200px;
 }
