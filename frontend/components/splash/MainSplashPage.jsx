@@ -2,6 +2,7 @@ import React from 'react';
 
 const MainSplashPage = () => (
   <div className="splash-images-container">
+    <div className="shadow-ground" />
     {/* sub-background images */}
     <img className="cross-left sub-bg" src="https://discordapp.com/assets/a14c5b02487874dca7fae0481ef90dbb.svg" alt="cross" />
     <img className="cross-right sub-bg" src="https://discordapp.com/assets/a14c5b02487874dca7fae0481ef90dbb.svg" alt="cross" />
