@@ -1,26 +1,55 @@
 @import './util/branding.scss';
 
 .splash-message {
-  box-sizing: border-box;
   width: 810px;
-  height: 241px;
-  padding-top: 20px;
+  height: 240px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 
   h3 {
     color: white;
     font-size: 33px;
-    // margin-bottom: 10px;
     padding-bottom: 14px;
   }
 
   p {
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  span {
+    margin-top: 30px;
+    display: flex;
+    width: 67%;
+    justify-content: space-between;
+    
+    a {
+      padding: 14px 0;
+      width: 46%;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      &:first-child {
+        background-color: rgb(67, 181, 129);
+      }
+      
+      &:last-child {
+        background-color: $blue;
+      }
+
+      &:hover {
+        top: 1px;
+      }
+    }
   }
 }

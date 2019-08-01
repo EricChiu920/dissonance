@@ -9,8 +9,10 @@ const Splash = () => (
     <header>
       <Route exact path="/" component={NavbarContainer} />
     </header>
-    <SplashMessage />
-    <MainSplashPage />
+    <div className="splash-main">
+      <SplashMessage />
+      <MainSplashPage />
+    </div>
   </div>
 );
 
