@@ -12,7 +12,7 @@
   h3 {
     color: white;
     font-size: 33px;
-    padding-bottom: 14px;
+    padding-bottom: 15px;
   }
 
   p {
@@ -27,8 +27,17 @@
     display: flex;
     width: 67%;
     justify-content: space-between;
-    
+
     a {
+      // background color from discord
+      background-color: rgb(67, 181, 129);
+    }
+
+    button {
+      background-color: $blue;
+    }
+    
+    a, button {
       padding: 14px 0;
       width: 46%;
       border: none;
@@ -38,15 +47,6 @@
       display: flex;
       justify-content: center;
       position: relative;
-
-      &:first-child {
-        // background color from discord
-        background-color: rgb(67, 181, 129);
-      }
-      
-      &:last-child {
-        background-color: $blue;
-      }
 
       &:hover {
         top: 1px;

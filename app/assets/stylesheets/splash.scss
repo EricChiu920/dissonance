@@ -1,5 +1,9 @@
 @import './util/branding.scss';
 
+.sub-bg {
+  opacity: 0.3;;
+}
+
 .splash-background {
   // background color from discord
   background-color: rgb(38, 38, 43);
@@ -67,4 +71,124 @@
 .mystery-chest {
   top: 57px;
   left: 761px;
+}
+
+.cross-left {
+  top: 61px;
+  left: 421px;
+}
+
+.cross-right {
+  top: 351px;
+  left: 1541px;
+}
+
+.triangle-left {
+  top: 271px;
+  left: 421px;
+}
+
+.triangle-right {
+  top: 21px;
+  left: 1031px;
+}
+
+.circle-left {
+  top: 41px;
+  left: 641px;
+}
+
+.circle-right {
+  top: 291px;
+  left: 1576px;
+}
+
+.square-left {
+  bottom: 641px;
+  left: 1331px;
+}
+
+.square-mid {
+  bottom: 133px;
+  left: 1017px;
+}
+
+.square-right {
+  top: 171px;
+  left: 1431px;
+}
+
+.dot-top-left {
+  bottom: 641px;
+  left: 681px;
+}
+
+.dot-top-right {
+  bottom: 641px;
+  left: 1531px;
+}
+
+.dot-left {
+  bottom: 241px;
+  left: 401px;
+}
+
+.dot-right {
+  bottom: 181px;
+  left: 1621px;
+}
+
+.dot-monitor-left {
+  bottom: 502px;
+  left: 718px;
+  width: 24px;
+  height: 36px;
+}
+
+.dot-monitor-right {
+  bottom: 541px;
+  left: 1181px;
+}
+
+.dot-big {
+  height: 79px;
+  width: 86px;
+  left: 777px;
+  bottom: 111px;
+}
+
+.moving-bg-img {
+  animation: 1.5s ease-in-out infinite alternate upAndDown;
+}
+
+.bomb {
+  left: 519px;
+  bottom: 372px;
+  animation-delay: 0.4s;
+}
+
+.coin-left {
+  left: 572px;
+  bottom: 338px;
+}
+
+.coin-right {
+  left: 1080px;
+  top: 3px;
+}
+
+.floppy-disc {
+  left: 1250px;
+  bottom: 429px;
+}
+
+// animation from discord app
+@keyframes upAndDown {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

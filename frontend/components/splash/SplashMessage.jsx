@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SplashMessage = () => (
+const SplashMessage = ({ login }) => (
   <div className="splash-message">
     <h3>It&apos;s time to ditch Skype and TeamSpeak.</h3>
     <p>
@@ -13,8 +13,8 @@ const SplashMessage = () => (
       Simplify your life.
     </p>
     <span>
-      <Link to="/login">Login</Link>
-      <Link to="/login">Login</Link>
+      <Link to="/signup">Sign Up</Link>
+      <button onClick={login} type="button">Sign in as guest</button>
     </span>
   </div>
 );

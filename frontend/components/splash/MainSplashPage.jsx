@@ -3,12 +3,29 @@ import React from 'react';
 const MainSplashPage = () => (
   <div className="splash-images-container">
     {/* sub-background images */}
-    <img src="https://discordapp.com/assets/a14c5b02487874dca7fae0481ef90dbb.svg" alt="cross" />
+    <img className="cross-left sub-bg" src="https://discordapp.com/assets/a14c5b02487874dca7fae0481ef90dbb.svg" alt="cross" />
+    <img className="cross-right sub-bg" src="https://discordapp.com/assets/a14c5b02487874dca7fae0481ef90dbb.svg" alt="cross" />
+    <img className="triangle-left sub-bg" src="https://discordapp.com/assets/0a2fd7b3bab977b4619f466b81b426d4.svg" alt="triangle" />
+    <img className="triangle-right sub-bg" src="https://discordapp.com/assets/0a2fd7b3bab977b4619f466b81b426d4.svg" alt="triangle" />
+    <img className="circle-left sub-bg" src="https://discordapp.com/assets/afdfaaeb6d6639e24086ced7aa07975d.svg" alt="circle" />
+    <img className="circle-right sub-bg" src="https://discordapp.com/assets/afdfaaeb6d6639e24086ced7aa07975d.svg" alt="circle" />
+    <img className="square-left sub-bg" src="https://discordapp.com/assets/173ee5a6d2f1b6a19190465c41371a3b.svg" alt="square" />
+    <img className="square-mid sub-bg" src="https://discordapp.com/assets/173ee5a6d2f1b6a19190465c41371a3b.svg" alt="square" />
+    <img className="square-right sub-bg" src="https://discordapp.com/assets/173ee5a6d2f1b6a19190465c41371a3b.svg" alt="square" />
+    <img className="dot-top-left sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-top-right sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-left sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-right sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-monitor-left sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-monitor-right sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
+    <img className="dot-big sub-bg" src="https://discordapp.com/assets/f877364ca453abc089cf7fe8d22c9c3f.svg" alt="dot" />
 
     {/* sub images */}
-    <img className="bomb" src="https://discordapp.com/assets/eb301f28da3199edbd3ef19690d61674.svg" alt="bomb" />
-    <img src="https://discordapp.com/assets/9e05338bd66e0985fceb83317cb94b9c.svg" alt="coin" />
+    <img className="bomb moving-bg-img" src="https://discordapp.com/assets/eb301f28da3199edbd3ef19690d61674.svg" alt="bomb" />
+    <img className="coin-left moving-bg-img" src="https://discordapp.com/assets/9e05338bd66e0985fceb83317cb94b9c.svg" alt="coin" />
+    <img className="coin-right moving-bg-img" src="https://discordapp.com/assets/9e05338bd66e0985fceb83317cb94b9c.svg" alt="coin" />
     <img className="mystery-chest" src="https://discordapp.com/assets/81d74b2ebb053fbccee41865a47d48c3.svg" alt="mystery box" />
+    <img className="floppy-disc moving-bg-img" src="https://discordapp.com/assets/215346366a9a7d50924fc245ddb048d2.svg" alt="floppy-disc" />
 
     {/* main images */}
     <img className="potion" src="https://discordapp.com/assets/0b5a0339571e72656eea93eb55d73eae.svg" alt="potion" />
