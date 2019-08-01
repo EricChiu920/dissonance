@@ -1,7 +1,8 @@
 @import './util/branding.scss';
 
 .splash-background {
-  background-color: $black;
+  // background color from discord
+  background-color: rgb(38, 38, 43);
 }
 
 .splash-main {
@@ -20,6 +21,11 @@
   img {
     position: absolute;
   }
+}
+
+.potion {
+  top: 397px;
+  left: 391px;
 }
 
 .monitor {
@@ -56,4 +62,9 @@
   top: 233px;
   left: 1288px;
   height: 200px;
+}
+
+.mystery-chest {
+  top: 57px;
+  left: 761px;
 }
