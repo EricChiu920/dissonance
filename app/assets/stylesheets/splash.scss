@@ -182,6 +182,17 @@
   bottom: 429px;
 }
 
+.shadow-ground {
+  height: 50px;
+  width: 1300px;
+  position: absolute;
+  // color from discordapp
+  background-color: rgba(0, 0, 0, 0.1);
+  bottom: 40px;
+  left: 350px;
+  border-radius: 50px;
+}
+
 // animation from discord app
 @keyframes upAndDown {
   0% {
