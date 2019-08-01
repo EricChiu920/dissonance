@@ -1,23 +1,19 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import NavbarContainer from './navbar/NavbarContainer';
+import Navbar from './navbar/Navbar';
 import MainSplashPage from './MainSplashPage';
-import SplashMessage from './SplashMessage';
+import SplashMessageContainer from './SplashMessageContainer';
 
 const Splash = () => (
   <div className="splash-background">
-    <header>
-      <Route exact path="/" component={NavbarContainer} />
+    <header className="header-nav">
+      <Route exact path="/" component={Navbar} />
     </header>
     <div className="splash-main">
-      <SplashMessage />
+      <SplashMessageContainer />
       <MainSplashPage />
     </div>
   </div>
 );
-
-// const cssClasses = currentUser ?  "loggedInBackground" : "loggedoutBackground"
-
-// div className={cssClasses}
 
 export default Splash;

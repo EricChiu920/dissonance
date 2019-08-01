@@ -1,27 +1,81 @@
 @import './util/branding.scss';
 
+$rightMargin: 20px;
+
+.header-nav {
+  // display: flex;
+  // justify-content: center;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   height: 50px;
   padding-top: 12px;
+  max-width: 85%;
+  margin: 0 auto;
 
   img {
-    margin-left: -55px;
+    min-width: 150px;
   }
 }
 
-.navbar img {
+.line {
+  height: 12px;
+  width: 1.6px;
+  margin-right: $rightMargin;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+  li {
+    color: $dark-white;
+    margin-right: $rightMargin;
+    
+    &:hover {
+      color: white;
+    }
+    
+    button {
+      height: 32px;
+      width: 69px;
+    }
+    
+    a {
+      color: $dark-white;
+    }
+  }
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  
+  ul{
+    li {
+      a {
+        color: $dark-white;
+        padding-left: 20px;
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
 }
 
 .session-form-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
-  margin: 10px 20px;
   color: $dark-white;
-  width: 80px;
+  height: 28px;
+  width: 65px;
   border: 2px solid $dark-white;
   font-size: 12px;
   border-radius: 20px;
