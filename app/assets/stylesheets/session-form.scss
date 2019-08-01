@@ -73,6 +73,13 @@ $small-margin: 10px;
   padding-bottom: 35px;
 }
 
+.session-background-image {
+  height: 100vh;
+  // image from:
+  // https://www.reddit.com/r/discordapp/comments/8v1h45/discord_login_page_background/
+  background-image: url(https://i.redd.it/y1ostvqnr4711.jpg);
+}
+
 .session-form label {
   color: $dark-white;
   display: flex;
@@ -80,31 +87,31 @@ $small-margin: 10px;
   width: $main-width;
   margin: 15px auto 0 auto;
   font-size: $small-font-size;
-}
 
-.session-form label input {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-self: center;
-  height: $input-height;
-  border-radius: 3px;
-  background-color: $black;
-  padding-left: 10px;
-  border: 1px solid $dark-black;
-  margin: $small-margin 0;
-  font-size: 17px;
-  font-weight: 300;
-  color: white;
-  caret-color: white;
-}
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-self: center;
+    height: $input-height;
+    border-radius: 3px;
+    background-color: $black;
+    padding-left: 10px;
+    border: 1px solid $dark-black;
+    margin: $small-margin 0;
+    font-size: 17px;
+    font-weight: 300;
+    color: white;
+    caret-color: white;
 
-.session-form label input:hover {
-  border: 1px solid black;
-}
+    &:hover {
+      border: 1px solid black;
+    }
 
-.session-form label input:focus {
-  border: 1px solid $blue;
+    &:focus {
+      border: 1px solid $blue;
+    }
+  }
 }
 
 .session-form form > input {

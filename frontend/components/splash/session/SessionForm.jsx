@@ -64,23 +64,27 @@ class SessionForm extends React.Component {
     );
 
     return (
-      <div className="session-form centered">
-        <SessionErrors errors={sessionErrors} />
-        <SessionFormMessage formType={formType} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="email">
-            EMAIL
-            <input onChange={this.updateInput('email')} type="email" value={email} required />
-          </label>
-          {usernameField}
-          <label htmlFor="password">
-            PASSWORD
-            <input onChange={this.updateInput('password')} type="password" value={password} required />
-          </label>
-          {forgotPassword}
-          <input type="submit" value={formType} />
-        </form>
-        <OtherFormMessage formType={formType} />
+      <div className="session-background-image">
+        <div className="session-form centered">
+          <SessionErrors errors={sessionErrors} />
+          <SessionFormMessage formType={formType} />
+
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="email">
+              EMAIL
+              <input onChange={this.updateInput('email')} type="email" value={email} required />
+            </label>
+            {usernameField}
+            <label htmlFor="password">
+              PASSWORD
+              <input onChange={this.updateInput('password')} type="password" value={password} required />
+            </label>
+            {forgotPassword}
+            <input type="submit" value={formType} />
+          </form>
+
+          <OtherFormMessage formType={formType} />
+        </div>
       </div>
     );
   }

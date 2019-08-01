@@ -1,0 +1,53 @@
+@import './util/branding.scss';
+
+.splash-background {
+  background-color: $black;
+  height: 100%;
+}
+
+.splash-images-container {
+  width: 2000px;
+  height: 650px;
+  display: flex;
+  position: relative;
+
+  img {
+    position: absolute;
+  }
+}
+
+.monitor {
+  top: 419px;
+  left: 663px;
+}
+
+.disc {
+  top: 785px;
+  left: 1376px;
+}
+
+.square-phone {
+  top: 633px;
+  left: 405px;
+}
+
+.round-phone {
+  top: 638px;
+  left: 551px;
+}
+
+.game-controller {
+  top: 779px;
+  left: 698px;
+}
+
+.laptop {
+  top: 539px;
+  left: 949px;
+}
+
+.headphones {
+  top: 523px;
+  left: 1241px;
+  height: 200px;
+}
