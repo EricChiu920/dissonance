@@ -19,6 +19,18 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
+  has_many :created_servers,
+    foreign_key: :owner_id,
+    class_name: :Server
+
+  has_many :user_servers,
+    foreign_key: :user_id,
+    class_name: :UserServers
+
+  has_many :servers,
+    through: :user_servers,
+    source: :server
+
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
     return nil unless @user && @user.is_password?(password)
