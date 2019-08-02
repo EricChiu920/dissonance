@@ -1,11 +1,6 @@
-@import './util/branding.scss';
+@import '../util/branding.scss';
 
 $rightMargin: 20px;
-
-.header-nav {
-  // display: flex;
-  // justify-content: center;
-}
 
 .navbar {
   display: flex;

@@ -1,0 +1,24 @@
+@import '../util/branding.scss';
+
+.server-icon-container {
+  width: 73px;
+  background-color: $black;
+}
+
+.server-side-nav {
+  display: flex;
+  height: 100vh;
+}
+
+.server-icon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  background-color: $grey;
+}
+
+.server-side-main-container {
+  width: 240px;
+  // color from discordapp
+  background-color: rgb(47, 49, 54)
+}

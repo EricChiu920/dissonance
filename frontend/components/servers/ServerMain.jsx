@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import ServerSideNavContainer from './ServerSideNavContainer';
+import ServerSideNavContainer from './sideNav/SideNavContainer';
 import ServerIndex from './ServerIndex';
 
 const ServerMain = () => (
-  <div>
+  <div className="server-main">
     <ServerSideNavContainer />
     <Route path="/channels/all" component={ServerIndex} />
   </div>
