@@ -1,4 +1,12 @@
+@import '../util/branding.scss';
+
 .server-main {
   display: flex;
   height: 100vh;
+}
+
+.server-index {
+  background-image: url(https://discordapp.com/assets/c486dc65ce2877eeb18e4c39bb49507a.svg);
+  background-color: rgb(54, 57, 63);
+  width: 100%;
 }

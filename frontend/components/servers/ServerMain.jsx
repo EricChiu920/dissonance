@@ -6,7 +6,8 @@ import ServerIndex from './ServerIndex';
 const ServerMain = () => (
   <div className="server-main">
     <ServerSideNavContainer />
-    <Route path="/channels/all" component={ServerIndex} />
+    {/* <Route path="/channels/all" component={ServerIndex} /> */}
+    <ServerIndex />
   </div>
 );
 

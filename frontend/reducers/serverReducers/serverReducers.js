@@ -26,3 +26,10 @@ const serverReducer = (oldState = {}, action) => {
 };
 
 export default serverReducer;
+
+export const currentUserServersSelector = (state) => {
+  const { session: { id }, entities: { users, servers } } = state;
+  const currentUser = users[id];
+
+  return currentUser.joinedServers.map(serverId => servers[serverId].name);
+};

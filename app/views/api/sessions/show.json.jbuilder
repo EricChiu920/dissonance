@@ -1,2 +1,1 @@
-json.partial! '/api/users/user', user: @user
-json.joinedServers @user.servers.pluck(:id)
+json.partial! '/api/sessions/session', user: @user
