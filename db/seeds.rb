@@ -32,14 +32,20 @@ andrew = User.create!({username: 'andrew', email: 'andrew@app-academy.com', pass
 pokemon = pokemon_fan1.created_servers.create!({name: 'Pokemon'})
 langrisser = eric.created_servers.create!({name: 'Langrisser'})
 app_academy = brian.created_servers.create!({name: 'App Academy'})
+fortnite = guest.created_servers.create!({name: 'Fornite'})
+minecraft = guest.created_servers.create!({name: 'Minecraft'})
+spellbreak = guest.created_servers.create!({name: 'Spellbreak'})
+rainbow6 = guest.created_servers.create!({name: 'Rainbow 6'})
+apex_legends = guest.created_servers.create!({name: 'Apex Legends'})
+overwatch = guest.created_servers.create!({name: 'Overwatch'})
+destiny2 = guest.created_servers.create!({name: 'Destiny 2'})
+terraria = guest.created_servers.create!({name: 'terraria'})
 
 langrisser.user_servers.create!([
-  {user_id: eric.id},
   {user_id: guest.id}
 ])
 
 pokemon.user_servers.create!([
-  {user_id: pokemon_fan1.id},
   {user_id: pokemon_fan2.id},
   {user_id: pokemon_fan3.id},
   {user_id: pokemon_fan4.id},
@@ -49,7 +55,6 @@ pokemon.user_servers.create!([
 ])
 
 app_academy.user_servers.create!([
-  {user_id: brian.id},
   {user_id: andrew.id},
   {user_id: david.id},
   {user_id: oliver.id},

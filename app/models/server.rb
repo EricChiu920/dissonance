@@ -12,6 +12,8 @@
 class Server < ApplicationRecord
   validates :name, :owner_id, presence: true
 
+  after_create :join_server!
+
   belongs_to :owner,
     foreign_key: :owner_id,
     class_name: :User
@@ -23,4 +25,8 @@ class Server < ApplicationRecord
   has_many :users,
     through: :user_servers,
     source: :user
+
+  def join_server!
+    self.user_servers.create!({user_id: owner_id})
+  end
 end
