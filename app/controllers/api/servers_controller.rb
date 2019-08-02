@@ -1,5 +1,5 @@
 class Api::ServersController < ApplicationController
-  before_action :ensure_logged_in
+  before_action :ensure_logged_in, only: [:create, :update, :destroy]
   
   def index
     @servers = Server.all
@@ -8,7 +8,7 @@ class Api::ServersController < ApplicationController
   end
 
   def show
-    @server = Server.find(params[:server][:id])
+    @server = Server.find(params[:id])
     render :show
   end
 
@@ -23,7 +23,7 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    @server = current_user.servers.find(params[:server][:id])
+    @server = current_user.servers.find(params[:id])
 
     if @server.update(server_params)
       render :show
@@ -33,7 +33,7 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
-    @server = current_user.servers.find(params[:server][:id])
+    @server = current_user.servers.find(params[:id])
 
     if @server
       @server.destroy
