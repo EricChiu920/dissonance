@@ -58,14 +58,14 @@ export const createServer = newServer => (dispatch) => {
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
-export const updateServer = updatedServer => (dispatch) => {
-  return ServerAPIUtils.updateServer(updatedServer)
+export const updateServer = editedServer => (dispatch) => {
+  return ServerAPIUtils.updateServer(editedServer)
     .then(server => dispatch(receiveServer(server)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
-export const deleteServer = id => (dispatch) => {
-  return ServerAPIUtils.deleteServer(id)
-    .then(() => dispatch(removeServer(id)))
+export const deleteServer = server => (dispatch) => {
+  return ServerAPIUtils.deleteServer(server)
+    .then(() => dispatch(removeServer(server.id)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };

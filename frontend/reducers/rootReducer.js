@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import entitiesReducer from './entitiesReducer';
-import sessionReducer from './sessionReducer';
+import sessionReducer from './sessionReducers/sessionReducer';
 import errorsReducer from './errorsReducer';
 
 const rootReducer = combineReducers({

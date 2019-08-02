@@ -8,8 +8,13 @@ class Api::ServersController < ApplicationController
   end
 
   def show
-    @server = Server.find(params[:id])
-    render :show
+    
+    if Server.find(params[:id])
+      @server = Server.find(params[:id])
+      render :show
+    else
+      render json: ['No server found'], status: 404
+    end
   end
 
   def create
@@ -18,7 +23,7 @@ class Api::ServersController < ApplicationController
     if @server.save
       render :show
     else
-      render @server.errors.full_messages
+      render json: @server.errors.full_messages, status: 422
     end
   end
 
@@ -27,20 +32,15 @@ class Api::ServersController < ApplicationController
     if @server.update(server_params)
       render :show
     else
-      render @server.errors.full_messages
+      render json: @server.errors.full_messages, status: 422
     end
   end
 
   def destroy
     @server = current_user.created_servers.find(params[:id])
 
-    if @server
-      @server.destroy
-
-      render json: {}
-    else
-      render json: ["Server does not exist"]
-    end
+    @server.destroy
+    render json: {}
   end
 
   private

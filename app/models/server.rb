@@ -14,8 +14,7 @@ class Server < ApplicationRecord
 
   belongs_to :owner,
     foreign_key: :owner_id,
-    class_name: :User,
-    dependent: :destroy
+    class_name: :User
 
   has_many :user_servers,
     foreign_key: :server_id,
