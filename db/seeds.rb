@@ -10,6 +10,7 @@ User.destroy_all
 Server.destroy_all
 UserServers.destroy_all
 
+guest = User.create!({username: 'guest', email: 'guest@mail.com', password: 'hunter12'})
 eric = User.create!({username: 'Eric', email: 'eric@a.c', password: 'hunter12'})
 pokemon_fan1 = User.create!({username: 'Elite4', email: 'pokemon_fan1@pkm.com', password: 'pikachu'})
 pokemon_fan2 = User.create!({username: 'GymLeader', email: 'pokemon_fan2@pkm.com', password: 'pikachu'})
@@ -27,7 +28,6 @@ oliver = User.create!({username: 'oliver', email: 'oliver@app-academy.com', pass
 polina = User.create!({username: 'polina', email: 'polina@app-academy.com', password: 'starwars'})
 joshua = User.create!({username: 'joshua', email: 'joshua@app-academy.com', password: 'starwars'})
 andrew = User.create!({username: 'andrew', email: 'andrew@app-academy.com', password: 'starwars'})
-guest = User.create!({username: 'guest', email: 'guest@mail.com', password: 'hunter12'})
 
 pokemon = pokemon_fan1.created_servers.create!({name: 'Pokemon'})
 langrisser = eric.created_servers.create!({name: 'Langrisser'})

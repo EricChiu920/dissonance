@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer } from './util/serverAPIUtil';
+import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer } from './actions/serverActions';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
