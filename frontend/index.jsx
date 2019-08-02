@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { signup, login, logout } from './actions/sessionActions';
+import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer } from './util/serverAPIUtil';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* TESTING */
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
+  window.fetchAllServers = fetchAllServers;
+  window.fetchServer = fetchServer;
+  window.createServer = createServer;
+  window.updateServer = updateServer;
+  window.deleteServer = deleteServer;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   /* TESTING */

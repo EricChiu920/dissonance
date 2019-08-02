@@ -13,7 +13,7 @@ class Api::ServersController < ApplicationController
   end
 
   def create
-    @server = current_user.servers.new(server_params)
+    @server = current_user.created_servers.new(server_params)
 
     if @server.save
       render :show
@@ -23,8 +23,7 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    @server = current_user.servers.find(params[:id])
-
+    @server = current_user.created_servers.find(params[:id])
     if @server.update(server_params)
       render :show
     else
@@ -33,7 +32,7 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
-    @server = current_user.servers.find(params[:id])
+    @server = current_user.created_servers.find(params[:id])
 
     if @server
       @server.destroy
