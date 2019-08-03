@@ -1,6 +1,14 @@
 @import '../util/branding.scss';
 
+  // colors from discordapp
+$text-color: rgb(185, 187, 190);
+$expanded-radius: 14px;
+$icon-top-margin: 8px;
+
 .server-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 73px;
   background-color: $black;
 }
@@ -12,13 +20,70 @@
 
 .server-icon {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 48px;
   height: 48px;
-  background-color: $grey;
+  border-radius: 50%;
+  background-color: $dark-grey;
+  color: $dark-white;
+  margin-top: $icon-top-margin;
+  animation: deflate 0.3s linear forwards;
+
+  &:first-child {
+    margin-top: $expanded-radius;
+  }
+
+  &:hover {
+    border-radius: 50%;
+    animation: expand 0.3s linear forwards;
+  }
 }
 
 .server-side-main-container {
   width: 240px;
-  // color from discordapp
-  background-color: rgb(47, 49, 54);
+  background-color: $dark-grey;
+}
+
+.add-server-button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: $dark-grey;
+  margin-top: $icon-top-margin;
+  border: none;
+  font-size: 36px;
+  font-weight: 200;
+  color: rgb(67, 181, 129)
+}
+
+@keyframes deflate {
+  0% {
+    border-radius: $expanded-radius;
+    background-color: $blue;
+  }
+  
+  100% {
+    border-radius: 50%;
+    background-color: $dark-grey;
+  }
+}
+
+@keyframes expand {
+  0% {
+    border-radius: 50%;
+    background-color: $dark-grey;
+  }
+
+  100% {
+    border-radius: $expanded-radius;
+    background-color: $blue;
+  }
 }

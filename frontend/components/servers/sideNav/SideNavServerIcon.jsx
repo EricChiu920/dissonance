@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SideNavServerIcon = () => (
+const SideNavServerIcon = ({ server }) => (
   <li className="server-icon">
-    <p>Icon here</p>
+    <p>{server[0].toUpperCase()}</p>
   </li>
 );
 
