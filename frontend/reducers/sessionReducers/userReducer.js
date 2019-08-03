@@ -5,8 +5,6 @@ const userReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER: {
       const { user: { id }, user } = action.payload;
-      debugger
-
       return Object.assign({}, oldState, { [id]: user });
     }
     default:

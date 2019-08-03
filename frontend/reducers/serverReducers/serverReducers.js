@@ -1,4 +1,5 @@
 import { RECEIVE_ALL_SERVERS, RECEIVE_SERVER, REMOVE_SERVER } from '../../actions/serverActions';
+import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 
 const serverReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -12,6 +13,11 @@ const serverReducer = (oldState = {}, action) => {
       const { server: { id }, server } = action;
 
       return Object.assign({}, oldState, { [id]: server });
+    }
+    case RECEIVE_CURRENT_USER: {
+      const { servers } = action.payload;
+
+      return Object.assign({}, oldState, servers);
     }
     case REMOVE_SERVER: {
       const { id } = action;
@@ -27,9 +33,16 @@ const serverReducer = (oldState = {}, action) => {
 
 export default serverReducer;
 
-export const currentUserServersSelector = (state) => {
+export const userServerNamesSelector = (state) => {
   const { session: { id }, entities: { users, servers } } = state;
   const currentUser = users[id];
 
-  return currentUser.joinedServers.map(serverId => servers[serverId].name);
+  return currentUser.joinedServers.map((serverId) => {
+    const server = servers[serverId];
+
+    return {
+      id: serverId,
+      name: server.name,
+    };
+  });
 };
