@@ -3,6 +3,12 @@ import SideNavServerIcon from './SideNavServerIcon';
 import SideNavMainContent from './SideNavMainContent';
 
 class SideNav extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.createServerModal = this.createServerModal.bind(this);
+  }
+
   createServerModal() {
     const { openModal } = this.props;
 
@@ -28,7 +34,7 @@ class SideNav extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default SideNav;
 

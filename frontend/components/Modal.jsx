@@ -2,7 +2,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../actions/modalActions';
-import { createServer } from '../actions/serverActions';
 import CreateServerContainer from './servers/serverAPIComponents/CreateServerContainer';
 
 class Modal extends React.Component {
@@ -59,7 +58,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModal()),
-    createServer: server => dispatch(createServer(server)),
   };
 };
 

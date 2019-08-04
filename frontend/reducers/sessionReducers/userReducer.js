@@ -12,9 +12,11 @@ const userReducer = (oldState = {}, action) => {
       // debugger;
       const { server: { owner_id: ownerId, id } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
-      newUser.joinedServers.slice().push(id);
+      newUser.joinedServers = newUser.joinedServers.slice();
+      newUser.joinedServers.push(id);
 
-      return Object.assign({}, oldState, { [ownerId]: newUser });
+      const newState = Object.assign({}, oldState, { [ownerId]: newUser });
+      return newState;
     }
     default:
       return oldState;

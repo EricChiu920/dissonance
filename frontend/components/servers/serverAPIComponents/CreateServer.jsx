@@ -21,9 +21,9 @@ class CreateServer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { createServer } = this.props;
-
+    const { createServer, closeModal } = this.props;
     createServer(this.state);
+    closeModal();
   }
 
   render() {
