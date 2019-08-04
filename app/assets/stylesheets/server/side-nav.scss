@@ -5,17 +5,21 @@ $text-color: rgb(185, 187, 190);
 $expanded-radius: 14px;
 $icon-top-margin: 8px;
 
+.server-side-nav {
+  position: relative;
+  display: flex;
+  height: 100vh;
+}
+
 .server-icon-container {
+  // position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 73px;
-  background-color: $black;
-}
-
-.server-side-nav {
-  display: flex;
   height: 100vh;
+  background-color: $black;
+  overflow: hidden;
 }
 
 .server-icon {
@@ -23,7 +27,7 @@ $icon-top-margin: 8px;
   justify-content: center;
   align-items: center;
   width: 48px;
-  height: 48px;
+  min-height: 48px;
   border-radius: 50%;
   background-color: $dark-grey;
   color: $dark-white;
