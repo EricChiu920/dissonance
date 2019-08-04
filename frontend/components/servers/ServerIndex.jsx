@@ -1,7 +1,9 @@
 import React from 'react';
 
 const ServerIndex = () => (
-  <div className="server-index" />
+  <ul>
+    <li>server</li>
+  </ul>
 );
 
 export default ServerIndex;
