@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SideNavServerIcon from './SideNavServerIcon';
 import SideNavMainContent from './SideNavMainContent';
 
@@ -39,28 +40,34 @@ class SideNav extends React.Component {
   }
 
   render() {
-    const { serverNames, createdServers } = this.props;
+    const { serverNames, createdServers, path } = this.props;
     const { visibleServer } = this.state;
 
-    const serverIconList = serverNames.map((server, i) => (
-      <SideNavServerIcon
-        changeServer={this.changeServer(i)}
-        key={server.id}
-        server={server.name}
-        selected={i === visibleServer}
-      />
-    ));
     const mainServer = serverNames[visibleServer];
+    const serverIconList = serverNames.map((server, i) => (
+      <Link key={server.id} to={`/channels/${server.id}`}>
+        <SideNavServerIcon
+          changeServer={this.changeServer(i)}
+          server={server.name}
+          selected={i === visibleServer}
+        />
+      </Link>
+    ));
+    const sideMain = path === 'all' ? null : (
+      <div className="server-side-main-container">
+        <SideNavMainContent deleteServer={this.deleteServer(mainServer)} createdServers={createdServers} server={mainServer} />
+      </div>
+    );
+
 
     return (
       <div className="server-side-nav">
         <ul className="server-icon-container">
+          <Link to="/channels/all" className="server-icon"><img className="server-index-button" src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg" alt="discord brand icon" /></Link>
           {serverIconList}
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
         </ul>
-        <ul className="server-side-main-container">
-          <SideNavMainContent deleteServer={this.deleteServer(mainServer)} createdServers={createdServers} server={mainServer} />
-        </ul>
+        {sideMain}
       </div>
     );
   }

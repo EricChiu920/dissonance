@@ -1,11 +1,18 @@
 import { connect } from 'react-redux';
 import ServerIndex from './ServerIndex';
-import { deleteServer } from '../../actions/serverActions';
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
+  const { entities: { servers, users }, session: { id } } = state;
+  const { joinedServers } = users[id];
+
   return {
-    deleteServer: server => dispatch(deleteServer(server)),
+    servers: Object.values(servers),
+    joinedServers,
   };
 };
 
-export default connect(null, mapDispatchToProps)(ServerIndex);
+// const mapDispatchToProps = (dispatch) => {
+
+// }
+
+export default connect(mapStateToProps)(ServerIndex);

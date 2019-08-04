@@ -1,0 +1,55 @@
+@import '../util/branding.scss';
+
+$margin-between: 15px;
+
+.server-index {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    background-color: $dark-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $black;
+    border-radius: 10px;
+  }
+
+  h1 {
+    margin-top: 100px;
+    height: 40px;
+    margin-bottom: 150px;
+  }
+
+   p {
+     margin-bottom: 10px;
+   }
+}
+
+.server-index-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1100px;
+}
+
+.server-index-list-item {
+  height: 292px;
+  width: 256px;
+  border: 1px solid white;
+  margin-right: $margin-between;
+  margin-bottom: $margin-between;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.server-index-button {
+  // image from icon-library
+  width: 100%;
+}

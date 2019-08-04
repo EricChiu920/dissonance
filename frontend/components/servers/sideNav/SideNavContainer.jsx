@@ -5,13 +5,16 @@ import { userServerNamesSelector, userCreatedServersSelector } from '../../../re
 import { openModal } from '../../../actions/modalActions';
 import { deleteServer } from '../../../actions/serverActions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const serverNames = userServerNamesSelector(state);
   const createdServers = userCreatedServersSelector(state);
+  const { location: { pathname } } = ownProps;
+  const path = pathname.split('/')[2].toLowerCase();
 
   return {
     serverNames,
     createdServers,
+    path,
   };
 };
 

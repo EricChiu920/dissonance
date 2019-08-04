@@ -13,17 +13,14 @@ $icon-top-margin: 8px;
 }
 
 .server-icon-container {
-  // position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90px;
   height: 100vh;
   background-color: $black;
-  // padding-right: 20px;
   overflow-y: scroll;
   box-sizing: content-box;
-  // padding-right: 17px;
 
   &::-webkit-scrollbar {
       width: 0px;  /* Remove scrollbar space */
