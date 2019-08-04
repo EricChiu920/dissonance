@@ -5,9 +5,11 @@ import Splash from './splash/Splash';
 import LoginFormContainer from './splash/session/LoginFormContainer';
 import SignupFormContainer from './splash/session/SignupFormContainer';
 import ServerMain from './servers/ServerMain';
+import Modal from './Modal';
 
 const App = () => (
   <>
+    <Modal />
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <Route path="/channels" component={ServerMain} />

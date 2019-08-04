@@ -21,9 +21,11 @@
   height: 650px;
   display: flex;
   position: relative;
+  user-select: none;
 
   img {
     position: absolute;
+    -webkit-user-drag: none;
   }
 }
 

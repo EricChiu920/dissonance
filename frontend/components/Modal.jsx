@@ -2,14 +2,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../actions/modalActions';
-import CreateServerContainer from ''
+import { createServer } from '../actions/serverActions';
+import CreateServerContainer from './servers/serverAPIComponents/CreateServerContainer';
 
-class Modal extends React.component {
+class Modal extends React.Component {
+  static displayComponent(modal) {
+    switch (modal) {
+      case 'createServer': {
+        return <CreateServerContainer closeModal={closeModal} />;
+      }
+      default:
+        return null;
+    }
+  }
+
   constructor(props) {
     super(props);
 
     this.escCloseModal = this.escCloseModal.bind(this);
-    this.displayComponent = this.displayComponent.bind(this);
   }
 
   escCloseModal(e) {
@@ -20,38 +30,27 @@ class Modal extends React.component {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  displayComponent(modal) {
-    if (!modal) {
-      return null;
-    }
-
-    switch (modal) {
-      case 'createServer': {
-        return <CreateServerContainer />;
-      }
-      default:
-        return null;
-    }
-  }
-
   render() {
-    const { modal } = this.props;
-    const component = this.displayComponent(modal);
-
-    return (
-      <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
-          {component}
+    const { modal, closeModal } = this.props;
+    const component = modal ? (
+      <div className="modal-background" onKeyDown={e => this.escCloseModal(e)} onMouseDown={closeModal} role="button" tabIndex={0}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div className="modal-child" onKeyDown={this.escCloseModal} onMouseDown={e => e.stopPropagation()}>
+          {Modal.displayComponent(modal)}
         </div>
       </div>
+    ) : null;
+
+    return (
+      <>
+        {component}
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   const { modal } = state.ui;
-
   return {
     modal,
   };
@@ -60,6 +59,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModal()),
+    createServer: server => dispatch(createServer(server)),
   };
 };
 

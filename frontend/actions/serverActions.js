@@ -2,6 +2,7 @@ import * as ServerAPIUtils from '../util/serverAPIUtil';
 
 export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
+export const CREATE_SERVER = 'CREATE_SERVER';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS';
@@ -16,6 +17,13 @@ const receiveAllServers = (servers) => {
 const receiveServer = (server) => {
   return {
     type: RECEIVE_SERVER,
+    server,
+  };
+};
+
+const receiveNewServer = (server) => {
+  return {
+    type: CREATE_SERVER,
     server,
   };
 };
@@ -54,7 +62,7 @@ export const fetchServer = id => (dispatch) => {
 
 export const createServer = newServer => (dispatch) => {
   return ServerAPIUtils.createServer(newServer)
-    .then(server => dispatch(receiveServer(server)))
+    .then(server => dispatch(receiveNewServer(server)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 

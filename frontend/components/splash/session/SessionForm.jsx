@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
 
     const { processForm, history } = this.props;
     processForm(this.state)
-      .then(() => history.push('/'));
+      .then(() => history.push('/channels'));
   }
 
   guestLogin(e) {
