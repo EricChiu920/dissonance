@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SideNav from './SideNav';
-import { userServerNamesSelector } from '../../../reducers/serverReducers/serverReducers';
+import { userServerNamesSelector, userCreatedServersSelector } from '../../../reducers/serverReducers/serverReducers';
 import { openModal } from '../../../actions/modalActions';
 import { deleteServer } from '../../../actions/serverActions';
 
 const mapStateToProps = (state) => {
   const serverNames = userServerNamesSelector(state);
+  const createdServers = userCreatedServersSelector(state);
 
   return {
     serverNames,
+    createdServers,
   };
 };
 

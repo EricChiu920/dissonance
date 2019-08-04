@@ -39,7 +39,7 @@ class SideNav extends React.Component {
   }
 
   render() {
-    const { serverNames } = this.props;
+    const { serverNames, createdServers } = this.props;
     const { visibleServer } = this.state;
 
     const serverIconList = serverNames.map((server, i) => (
@@ -59,7 +59,7 @@ class SideNav extends React.Component {
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
         </ul>
         <ul className="server-side-main-container">
-          <SideNavMainContent deleteServer={this.deleteServer(mainServer)} server={mainServer} />
+          <SideNavMainContent deleteServer={this.deleteServer(mainServer)} createdServers={createdServers} server={mainServer} />
         </ul>
       </div>
     );
@@ -67,25 +67,3 @@ class SideNav extends React.Component {
 }
 
 export default SideNav;
-
-// const SideNav = ({ serverNames, openModal }) => {
-//   const serverIconList = serverNames.map(server => (
-//     <SideNavServerIcon key={server.id} server={server.name} />
-//   ));
-
-//   const createServerModal = () => {
-//     return openModal('createServer');
-//   };
-
-//   return (
-//     <div className="server-side-nav">
-//       <ul className="server-icon-container">
-//         {serverIconList}
-//         <button onClick={createServerModal} className="add-server-button" type="button">+</button>
-//       </ul>
-//       <ul className="server-side-main-container">
-//         <SideNavMainContent />
-//       </ul>
-//     </div>
-//   );
-// };

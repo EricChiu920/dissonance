@@ -7,7 +7,7 @@ const serverReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_SERVERS: {
       const { servers } = action;
 
-      return Object.assign({}, oldState, servers);
+      return Object.assign({}, servers);
     }
     case RECEIVE_SERVER: {
       const { server: { id }, server } = action;
@@ -24,13 +24,13 @@ const serverReducer = (oldState = {}, action) => {
 
       return Object.assign({}, oldState, servers);
     }
-    case REMOVE_SERVER: {
-      const { server: { id } } = action;
-      const newState = Object.assign({}, oldState);
-      delete newState[id];
+    // case REMOVE_SERVER: {
+    //   const { server: { id } } = action;
+    //   const newState = Object.assign({}, oldState);
+    //   delete newState[id];
 
-      return newState;
-    }
+    //   return newState;
+    // }
     default:
       return oldState;
   }
@@ -50,4 +50,11 @@ export const userServerNamesSelector = (state) => {
       name: server.name,
     };
   });
+};
+
+export const userCreatedServersSelector = (state) => {
+  const { entities: { users }, session: { id } } = state;
+  const currentUser = users[id];
+
+  return currentUser.createdServers;
 };

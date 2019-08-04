@@ -32,14 +32,14 @@ andrew = User.create!({username: 'andrew', email: 'andrew@app-academy.com', pass
 pokemon = pokemon_fan1.created_servers.create!({name: 'Pokemon'})
 langrisser = eric.created_servers.create!({name: 'Langrisser'})
 app_academy = brian.created_servers.create!({name: 'App Academy'})
-fortnite = guest.created_servers.create!({name: 'Fornite'})
-minecraft = guest.created_servers.create!({name: 'Minecraft'})
-spellbreak = guest.created_servers.create!({name: 'Spellbreak'})
-rainbow6 = guest.created_servers.create!({name: 'Rainbow 6'})
-apex_legends = guest.created_servers.create!({name: 'Apex Legends'})
-overwatch = guest.created_servers.create!({name: 'Overwatch'})
-destiny2 = guest.created_servers.create!({name: 'Destiny 2'})
-terraria = guest.created_servers.create!({name: 'terraria'})
+fortnite = eric.created_servers.create!({name: 'Fornite'})
+minecraft = eric.created_servers.create!({name: 'Minecraft'})
+spellbreak = eric.created_servers.create!({name: 'Spellbreak'})
+rainbow6 = eric.created_servers.create!({name: 'Rainbow 6'})
+apex_legends = eric.created_servers.create!({name: 'Apex Legends'})
+overwatch = eric.created_servers.create!({name: 'Overwatch'})
+destiny2 = eric.created_servers.create!({name: 'Destiny 2'})
+terraria = eric.created_servers.create!({name: 'terraria'})
 
 langrisser.user_servers.create!([
   {user_id: guest.id}
