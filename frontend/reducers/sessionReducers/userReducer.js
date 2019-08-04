@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
-import { CREATE_SERVER } from '../../actions/serverActions';
+import { CREATE_SERVER, REMOVE_SERVER } from '../../actions/serverActions';
 
 const userReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -15,8 +15,16 @@ const userReducer = (oldState = {}, action) => {
       newUser.joinedServers = newUser.joinedServers.slice();
       newUser.joinedServers.push(id);
 
-      const newState = Object.assign({}, oldState, { [ownerId]: newUser });
-      return newState;
+      return Object.assign({}, oldState, { [ownerId]: newUser });
+    }
+    case REMOVE_SERVER: {
+      const { server: { id, owner_id: ownerId } } = action;
+      const newUser = Object.assign({}, oldState[ownerId]);
+      newUser.joinedServers = newUser.joinedServers.slice();
+      const idx = newUser.joinedServers.indexOf(id);
+      newUser.joinedServers.splice(idx, 1);
+
+      return Object.assign({}, oldState, { [ownerId]: newUser });
     }
     default:
       return oldState;

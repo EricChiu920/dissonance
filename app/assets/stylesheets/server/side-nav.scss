@@ -40,7 +40,12 @@ $icon-top-margin: 8px;
 
   &:hover {
     border-radius: 50%;
-    animation: expand 0.3s linear forwards;
+    animation: expand 0.2s linear forwards;
+  }
+  
+  &:focus {
+    border-radius: $expanded-radius;
+    background-color: $blue;
   }
 }
 
@@ -66,6 +71,11 @@ $icon-top-margin: 8px;
   font-size: 36px;
   font-weight: 200;
   color: rgb(67, 181, 129)
+}
+
+.selected-side-nav-icon {
+  border-radius: $expanded-radius;
+  background-color: $blue;
 }
 
 @keyframes deflate {

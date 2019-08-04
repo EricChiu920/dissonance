@@ -12,6 +12,7 @@ class SideNav extends React.Component {
 
     this.createServerModal = this.createServerModal.bind(this);
     this.changeServer = this.changeServer.bind(this);
+    this.deleteServer = this.deleteServer.bind(this);
   }
 
   createServerModal() {
@@ -28,6 +29,15 @@ class SideNav extends React.Component {
     };
   }
 
+  deleteServer(server) {
+    const { deleteServer, history } = this.props;
+
+    return () => {
+      history.push('/');
+      deleteServer(server);
+    };
+  }
+
   render() {
     const { serverNames } = this.props;
     const { visibleServer } = this.state;
@@ -37,8 +47,10 @@ class SideNav extends React.Component {
         changeServer={this.changeServer(i)}
         key={server.id}
         server={server.name}
+        selected={i === visibleServer}
       />
     ));
+    const mainServer = serverNames[visibleServer];
 
     return (
       <div className="server-side-nav">
@@ -47,7 +59,7 @@ class SideNav extends React.Component {
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
         </ul>
         <ul className="server-side-main-container">
-          <SideNavMainContent server={serverNames[visibleServer]} />
+          <SideNavMainContent deleteServer={this.deleteServer(mainServer)} server={mainServer} />
         </ul>
       </div>
     );

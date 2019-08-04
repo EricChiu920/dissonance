@@ -25,7 +25,7 @@ const serverReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, servers);
     }
     case REMOVE_SERVER: {
-      const { id } = action;
+      const { server: { id } } = action;
       const newState = Object.assign({}, oldState);
       delete newState[id];
 

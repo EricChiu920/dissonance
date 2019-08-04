@@ -1,11 +1,12 @@
 import React from 'react';
-import SideNavUserControls from './SideNavUserControls';
 
-const SideNavMainContent = ({ server }) => (
-  <div>
-    <p>{server.name}</p>
-    <button ></button>
-  </div>
-);
+const SideNavMainContent = ({ server, deleteServer }) => {
+  return (
+    <div className="side-main-content">
+      <p>{server.name}</p>
+      <button onClick={deleteServer} type="button">Delete Server</button>
+    </div>
+  );
+};
 
 export default SideNavMainContent;

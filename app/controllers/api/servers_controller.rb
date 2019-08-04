@@ -40,7 +40,7 @@ class Api::ServersController < ApplicationController
     @server = current_user.created_servers.find(params[:id])
 
     @server.destroy
-    render json: {}
+    render :show
   end
 
   private
