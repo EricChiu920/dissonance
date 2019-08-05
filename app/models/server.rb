@@ -27,6 +27,10 @@ class Server < ApplicationRecord
     through: :user_servers,
     source: :user
 
+  has_many :channels,
+    foreign_key: :server_id,
+    class_name: :Channel
+
   def join_server!
     self.user_servers.create!({user_id: owner_id})
   end
