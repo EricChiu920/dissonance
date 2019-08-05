@@ -51,7 +51,15 @@ $icon-top-margin: 8px;
 }
 
 .side-nav-logout-button {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(180deg);
+  color: $red;
+
+  i {
+    padding-top: 8px;
+  }
 }
 
 .server-icon {
