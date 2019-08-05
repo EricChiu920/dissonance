@@ -37,7 +37,7 @@ class CreateServer extends React.Component {
           <p>By creating a server, you will have access to free voice and text chat to use amongst your friends.</p>
         </div>
         <div className="create-form-circle">
-          <form className="create-server-form">
+          <form className="create-server-form" onSubmit={this.handleSubmit}>
             <label htmlFor="serverName">
               SERVER NAME
               <input onChange={this.handleInput('name')} type="text" value={name} placeholder="Enter a server name" required />
