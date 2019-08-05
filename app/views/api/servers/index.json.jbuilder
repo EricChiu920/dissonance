@@ -1,5 +1,6 @@
 @servers.each do |server|
   json.set! server.id do
-    json.partial! '/api/servers/server', server: server, users: server.users
+    json.partial! '/api/servers/server', server: server
+    json.userCount server.users.length
   end
 end

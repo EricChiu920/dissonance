@@ -73,6 +73,7 @@ $icon-top-margin: 8px;
   color: $dark-white;
   margin-top: $icon-top-margin;
   animation: deflate 0.3s linear forwards;
+  cursor: default;
 
   &:first-child {
     margin-top: $expanded-radius;
@@ -98,6 +99,33 @@ $icon-top-margin: 8px;
 .selected-side-nav-icon {
   border-radius: $expanded-radius;
   background-color: $blue;
+}
+
+.side-nav-server-action-buttons {
+  display: flex;
+  
+  button {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    
+    &:first-child {
+      color: black;
+      background-color: rgba(250, 214, 8, 0.769);
+      margin-right: 5px;
+    }
+    
+    &:last-child {
+      color: white;
+      background-color: rgb(165, 47, 47);
+    }
+  }
 }
 
 @keyframes deflate {

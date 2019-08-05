@@ -4,6 +4,7 @@ import SideNav from './SideNav';
 import { userServerNamesSelector, userCreatedServersSelector } from '../../../reducers/serverReducers/serverReducers';
 import { openModal } from '../../../actions/modalActions';
 import { deleteServer } from '../../../actions/serverActions';
+import { logout } from '../../../actions/sessionActions';
 
 const mapStateToProps = (state, ownProps) => {
   const serverNames = userServerNamesSelector(state);
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     openModal: modal => dispatch(openModal(modal)),
     deleteServer: server => dispatch(deleteServer(server)),
+    logout: () => dispatch(logout()),
   };
 };
 

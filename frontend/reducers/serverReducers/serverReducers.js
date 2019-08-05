@@ -1,4 +1,8 @@
-import { RECEIVE_ALL_SERVERS, RECEIVE_SERVER, CREATE_SERVER } from '../../actions/serverActions';
+import {
+  RECEIVE_ALL_SERVERS,
+  RECEIVE_SERVER,
+  CREATE_SERVER,
+} from '../../actions/serverActions';
 import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 
 const serverReducer = (oldState = {}, action) => {
@@ -24,13 +28,6 @@ const serverReducer = (oldState = {}, action) => {
 
       return Object.assign({}, oldState, servers);
     }
-    // case REMOVE_SERVER: {
-    //   const { server: { id } } = action;
-    //   const newState = Object.assign({}, oldState);
-    //   delete newState[id];
-
-    //   return newState;
-    // }
     default:
       return oldState;
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavbarIcons = ({ currentUser, logout, selected }) => {
-  const formLink = currentUser ? <button className="session-form-link" onClick={logout} type="button">Logout</button> : <Link to="/login" className="session-form-link">Login</Link>;
+const NavbarIcons = ({ currentUser, selected }) => {
+  const formLink = currentUser ? <Link className="session-form-link" to="/channels/all">Open</Link> : <Link to="/login" className="session-form-link">Login</Link>;
   const classes = selected ? 'navbar-icons selected-side-nav-icon' : 'navbar-icons';
 
   return (

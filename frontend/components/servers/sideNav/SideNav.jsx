@@ -14,6 +14,7 @@ class SideNav extends React.Component {
     this.createServerModal = this.createServerModal.bind(this);
     this.changeServer = this.changeServer.bind(this);
     this.deleteServer = this.deleteServer.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   createServerModal() {
@@ -39,8 +40,19 @@ class SideNav extends React.Component {
     };
   }
 
+  logout() {
+    const { logout, history } = this.props;
+
+    logout()
+      .then(() => history.push('/'));
+  }
+
   render() {
-    const { serverNames, createdServers, path } = this.props;
+    const {
+      serverNames,
+      createdServers,
+      path,
+    } = this.props;
     const { visibleServer } = this.state;
 
     const mainServer = serverNames[visibleServer];
@@ -63,10 +75,16 @@ class SideNav extends React.Component {
     return (
       <div className="server-side-nav">
         <ul className="server-icon-container">
-          <Link to="/channels/all" className="server-icon"><img className="server-index-button" src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg" alt="discord brand icon" /></Link>
+          <Link to="/channels/all" className="server-icon">
+            <img
+              className="server-index-button"
+              src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg"
+              alt="discord brand icon"
+            />
+          </Link>
           {serverIconList}
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
-          <button className="side-nav-logout-button" type="button"><i className="fas fa-sign-out-alt fa-2x" /></button>
+          <button onClick={this.logout} className="side-nav-logout-button" type="button"><i className="fas fa-sign-out-alt fa-2x" /></button>
         </ul>
         {sideMain}
       </div>

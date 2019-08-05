@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { logout } from '../../../actions/sessionActions';
 import NavbarIcons from './NavbarIcons';
 
 const mapStateToProps = (state) => {
@@ -10,10 +9,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logout()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarIcons);
+export default connect(mapStateToProps)(NavbarIcons);
