@@ -9,14 +9,13 @@ $icon-top-margin: 8px;
   position: relative;
   display: flex;
   height: 100vh;
-  overflow: hidden;
 }
 
 .server-icon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90px;
+  width: 72px;
   height: 100vh;
   background-color: $black;
   overflow-y: scroll;

@@ -8,6 +8,7 @@ const ServerMain = () => (
     <SideNavContainer />
     <div className="server-index">
       <Route path="/channels/all" component={ServerIndexContainer} />
+      <Route path="/channels/:serverId/:channelId" />
     </div>
   </div>
 );
