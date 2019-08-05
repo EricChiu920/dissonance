@@ -2,12 +2,13 @@ class Api::ChannelsController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
   def show
-    @channel = current_user.servers.channels.find(params[:id])
+    @channel = Channel.find(params[:id])
 
     render :show
   end
 
   def create
+    debugger
     @channel = current_user.created_servers.find(params[:channel][:server_id]).channels.new(channel_params)
 
     if @channel.save
@@ -28,7 +29,15 @@ class Api::ChannelsController < ApplicationController
   end
 
   def destroy
-    @channel = current_user.created_servers.find(params[:channel][:server_id]).channels.new(channel_params)
+    @channel = current_user.created_servers.find(params[:channel][:server_id]).channels.find(params[:id])
+
+    if @channel
+      @channel.destroy
+
+      render :show
+    else
+      render json: ["Couldn't find that channel"], status: 404
+    end
   end
 
   private

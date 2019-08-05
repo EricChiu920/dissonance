@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer, joinServer, leaveServer } from './actions/serverActions';
+import { fetchChannel, createChannel, updateChannel, deleteChannel } from './util/channelAPIUtil';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,13 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* TESTING */
-  window.fetchAllServers = fetchAllServers;
-  window.fetchServer = fetchServer;
-  window.createServer = createServer;
-  window.updateServer = updateServer;
-  window.deleteServer = deleteServer;
-  window.joinServer = joinServer;
-  window.leaveServer = leaveServer;
+  window.fetchChannel = fetchChannel;
+  window.createChannel = createChannel;
+  window.updateChannel = updateChannel;
+  window.deleteChannel = deleteChannel;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   /* TESTING */

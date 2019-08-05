@@ -96,12 +96,12 @@ export const deleteServer = server => (dispatch) => {
 
 export const joinServer = server => (dispatch) => {
   return ServerAPIUtils.joinServer(server)
-    .then(server => dispatch(receiveJoinedServer(server)))
+    .then(joinedServer => dispatch(receiveJoinedServer(joinedServer)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
 export const leaveServer = server => (dispatch) => {
   return ServerAPIUtils.leaveServer(server)
-    .then(server => dispatch(receiveLeftServer(server)))
+    .then(leftServer => dispatch(receiveLeftServer(leftServer)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };

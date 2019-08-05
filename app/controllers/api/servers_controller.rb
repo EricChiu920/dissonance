@@ -9,7 +9,7 @@ class Api::ServersController < ApplicationController
 
   def show
     
-    if Server.find(params[:id])
+    if Server.includes(:channels).find(params[:id])
       @server = Server.find(params[:id])
       render :show
     else
