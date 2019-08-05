@@ -4,6 +4,8 @@ export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
 export const CREATE_SERVER = 'CREATE_SERVER';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
+export const JOIN_SERVER = 'JOIN_SERVER';
+export const LEAVE_SERVER = 'LEAVE_SERVER';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS';
 
@@ -31,6 +33,20 @@ const receiveNewServer = (server) => {
 const removeServer = (server) => {
   return {
     type: REMOVE_SERVER,
+    server,
+  };
+};
+
+const receiveJoinedServer = (server) => {
+  return {
+    type: JOIN_SERVER,
+    server,
+  };
+};
+
+const receiveLeftServer = (server) => {
+  return {
+    type: LEAVE_SERVER,
     server,
   };
 };
@@ -75,5 +91,17 @@ export const updateServer = editedServer => (dispatch) => {
 export const deleteServer = server => (dispatch) => {
   return ServerAPIUtils.deleteServer(server)
     .then(deletedServer => dispatch(removeServer(deletedServer)))
+    .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
+};
+
+export const joinServer = server => (dispatch) => {
+  return ServerAPIUtils.joinServer(server)
+    .then(server => dispatch(receiveJoinedServer(server)))
+    .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
+};
+
+export const leaveServer = server => (dispatch) => {
+  return ServerAPIUtils.leaveServer(server)
+    .then(server => dispatch(receiveLeftServer(server)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };

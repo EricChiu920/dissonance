@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer } from './actions/serverActions';
+import { fetchAllServers, fetchServer, createServer, updateServer, deleteServer, joinServer, leaveServer } from './util/serverAPIUtil';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createServer = createServer;
   window.updateServer = updateServer;
   window.deleteServer = deleteServer;
+  window.joinServer = joinServer;
+  window.leaveServer = leaveServer;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   /* TESTING */

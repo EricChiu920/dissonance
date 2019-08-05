@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_SERVERS, RECEIVE_SERVER, CREATE_SERVER, REMOVE_SERVER } from '../../actions/serverActions';
+import { RECEIVE_ALL_SERVERS, RECEIVE_SERVER, CREATE_SERVER } from '../../actions/serverActions';
 import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 
 const serverReducer = (oldState = {}, action) => {

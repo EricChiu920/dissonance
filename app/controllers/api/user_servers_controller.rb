@@ -1,8 +1,9 @@
 class Api::UserServersController < ApplicationController
   def create
-    @user_server = current_user.user_servers.new(user_server_params)
+    @user_server = current_user.user_servers.new
+    @user_server.server_id = params[:server][:id]
 
-    if user_server.save
+    if @user_server.save
       render :show
     else
       render json: @user_server.errors.full_messages
@@ -13,14 +14,10 @@ class Api::UserServersController < ApplicationController
     @user_server = current_user.user_servers.find_by(server_id: params[:id])
 
     if @user_server
+      @user_server.destroy
       render :show
     else
       render json: ['You have not joined this server']
     end
-  end
-
-  private
-  def user_server_params
-    params.require(:user_server).permit(:server_id)
   end
 end

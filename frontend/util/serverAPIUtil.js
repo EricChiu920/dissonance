@@ -41,3 +41,20 @@ export const deleteServer = (server) => {
     },
   });
 };
+
+export const joinServer = (server) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/user_servers',
+    data: {
+      server,
+    },
+  });
+};
+
+export const leaveServer = (server) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/user_servers/${server.id}`,
+  });
+};
