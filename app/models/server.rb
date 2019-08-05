@@ -29,7 +29,8 @@ class Server < ApplicationRecord
 
   has_many :channels,
     foreign_key: :server_id,
-    class_name: :Channel
+    class_name: :Channel,
+    dependent: :destroy
 
   def join_server!
     self.user_servers.create!({user_id: owner_id})

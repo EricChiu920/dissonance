@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { fetchChannel, createChannel, updateChannel, deleteChannel } from './util/channelAPIUtil';
+import { fetchChannel, createChannel, updateChannel, deleteChannel } from './actions/channelActions';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
