@@ -45,11 +45,37 @@ $margin-between: 15px;
   margin-bottom: $margin-between;
   border-radius: 5px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+
+  img {
+    height: 50%;
+  }
 }
 
 .server-index-button {
   // image from icon-library
   width: 100%;
+}
+
+.server-item-info {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 10px;
+
+  button {
+    border-radius: 5px;
+    min-width: 80px;
+    border: none;
+  }
+}
+
+.join-server-button {
+  background-color: $blue;
+}
+
+.leave-server-button {
+  background-color: $red;
 }

@@ -26,8 +26,33 @@ $icon-top-margin: 8px;
       width: 0px;  /* Remove scrollbar space */
       background: transparent;  /* Optional: just make scrollbar invisible */
   }
+
+  button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: $dark-grey;
+    margin-top: $icon-top-margin;
+    border: none;
+  }
 }
 
+.add-server-button {
+  font-size: 36px;
+  font-weight: 200;
+  color: rgb(67, 181, 129)
+}
+
+.side-nav-logout-button {
+  
+}
 
 .server-icon {
   display: flex;
@@ -61,24 +86,6 @@ $icon-top-margin: 8px;
   background-color: $dark-grey;
 }
 
-.add-server-button {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px;
-  padding-left: 8px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: $dark-grey;
-  margin-top: $icon-top-margin;
-  border: none;
-  font-size: 36px;
-  font-weight: 200;
-  color: rgb(67, 181, 129)
-}
 
 .selected-side-nav-icon {
   border-radius: $expanded-radius;

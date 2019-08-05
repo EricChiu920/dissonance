@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const { joinedServers } = users[id];
 
   return {
-    servers: Object.values(servers),
+    servers: Object.values(servers).sort((a, b) => Math.sign(b.userCount - a.userCount)),
     joinedServers,
   };
 };

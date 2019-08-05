@@ -34,7 +34,7 @@ class SideNav extends React.Component {
     const { deleteServer, history } = this.props;
 
     return () => {
-      history.push('/');
+      history.push('/channels/all');
       deleteServer(server);
     };
   }
@@ -66,6 +66,7 @@ class SideNav extends React.Component {
           <Link to="/channels/all" className="server-icon"><img className="server-index-button" src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg" alt="discord brand icon" /></Link>
           {serverIconList}
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
+          <button type="button"><i className="fas fa-sign-out-alt fa-2x" /></button>
         </ul>
         {sideMain}
       </div>

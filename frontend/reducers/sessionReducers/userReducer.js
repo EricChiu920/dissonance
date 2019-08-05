@@ -18,7 +18,9 @@ const userReducer = (oldState = {}, action) => {
       const { server: { owner_id: ownerId, id } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
       newUser.joinedServers = newUser.joinedServers.slice();
+      newUser.createdServers = newUser.createdServers.slice();
       newUser.joinedServers.push(id);
+      newUser.createdServers.push(id);
 
       return Object.assign({}, oldState, { [ownerId]: newUser });
     }
