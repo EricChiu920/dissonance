@@ -35,8 +35,7 @@ class SideNav extends React.Component {
     const { deleteServer, history } = this.props;
 
     return () => {
-      history.push('/channels/all');
-      deleteServer(server);
+      deleteServer(server).then(() => history.push('/channels/all'));
     };
   }
 
