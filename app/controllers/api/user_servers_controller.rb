@@ -6,7 +6,7 @@ class Api::UserServersController < ApplicationController
     if @user_server.save
       render :show
     else
-      render json: @user_server.errors.full_messages
+      render json: @user_server.errors.full_messages, status: 422
     end
   end
 
@@ -17,7 +17,7 @@ class Api::UserServersController < ApplicationController
       @user_server.destroy
       render :show
     else
-      render json: ['You have not joined this server']
+      render json: ['You have not joined this server'], status: 422
     end
   end
 end

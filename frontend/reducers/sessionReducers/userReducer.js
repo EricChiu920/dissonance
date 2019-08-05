@@ -32,13 +32,21 @@ const userReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { [ownerId]: newUser });
     }
     case JOIN_SERVER: {
-      debugger
-      // const { server: { server } } = action;
-      // const newUser = Object.assign({}, oldState[ownerId]);
-      return oldState;
+      const { server: { serverId, userId } } = action;
+      const newUser = Object.assign({}, oldState[userId]);
+      newUser.joinedServers = newUser.joinedServers.slice();
+      newUser.joinedServers.push(serverId);
+
+      return Object.assign({}, oldState, { [userId]: newUser });
     }
     case LEAVE_SERVER: {
-      
+      const { server: { serverId, userId } } = action;
+      const newUser = Object.assign({}, oldState[userId]);
+      newUser.joinedServers = newUser.joinedServers.slice();
+      const idx = newUser.joinedServers.indexOf(serverId);
+      newUser.joinedServers.splice(idx, 1);
+
+      return Object.assign({}, oldState, { [userId]: newUser });
     }
     default:
       return oldState;
