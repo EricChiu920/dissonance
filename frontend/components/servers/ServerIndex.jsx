@@ -9,8 +9,22 @@ class ServerIndex extends React.Component {
   }
 
   render() {
-    const { servers, joinedServers } = this.props;
-    const serverList = servers.map(server => <ServerIndexItem key={server.id} server={server} joinedServers={joinedServers} />);
+    const {
+      servers,
+      joinedServers,
+      joinServer,
+      leaveServer,
+    } = this.props;
+
+    const serverList = servers.map(server => (
+      <ServerIndexItem
+        key={server.id}
+        server={server}
+        joinedServers={joinedServers}
+        joinServer={joinServer}
+        leaveServer={leaveServer}
+      />
+    ));
 
     return (
       <>

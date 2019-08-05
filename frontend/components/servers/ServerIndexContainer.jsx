@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ServerIndex from './ServerIndex';
-import { fetchAllServers } from '../../actions/serverActions';
+import { fetchAllServers, joinServer, leaveServer } from '../../actions/serverActions';
 
 const mapStateToProps = (state) => {
   const { entities: { servers, users }, session: { id } } = state;
@@ -15,6 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllServers: () => dispatch(fetchAllServers()),
+    joinServer: server => dispatch(joinServer(server)),
+    leaveServer: server => dispatch(leaveServer(server)),
   };
 };
 
