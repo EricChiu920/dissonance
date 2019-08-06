@@ -14,3 +14,5 @@ class Channel extends React.Component {
     );
   }
 }
+
+export default Channel;

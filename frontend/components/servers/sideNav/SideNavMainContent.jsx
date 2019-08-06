@@ -1,10 +1,12 @@
 import React from 'react';
+import Channel from '../../channels/Channel';
 
 class SideNavMainContent extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleDeleteServer = this.handleDeleteServer.bind(this);
+    this.createChannelModal = this.createChannelModal.bind(this);
   }
 
   componentDidMount() {
@@ -30,11 +32,17 @@ class SideNavMainContent extends React.Component {
     };
   }
 
+  createChannelModal() {
+    const { openModal } = this.props;
+
+    return openModal('createChannel');
+  }
+
   render() {
     const { createdServers, channels, server = {} } = this.props;
     const { id, name } = server;
 
-    const channelList = channels.map(channel => <li>{channel.name}</li>);
+    const channelList = channels.map(channel => <Channel channel={channel} />);
 
     const serverActionButtons = createdServers.includes(id) ? (
       <div className="side-nav-server-action-buttons">
@@ -49,7 +57,10 @@ class SideNavMainContent extends React.Component {
         <div className="side-main-content">
           <div className="channel-list-index">
             <p>{name}</p>
-            <p>TEXT CHANNELS</p>
+            <div className="channel-info">
+              <p>TEXT CHANNELS</p>
+              <button onClick={this.createChannelModal} type="button">+</button>
+            </div>
             <ul className="channel-list-container">
               {channelList}
             </ul>

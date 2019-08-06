@@ -3,6 +3,7 @@ import SideNavMainContent from './SideNavMainContent';
 import { fetchServer, deleteServer } from '../../../actions/serverActions';
 import { userCreatedServersSelector } from '../../../reducers/serverReducers/serverReducers';
 import { serverChannelsSelector } from '../../../reducers/channelReducers/channelReducer';
+import { openModal } from '../../../actions/modalActions';
 
 const mapStateToProps = (state, ownProps) => {
   const createdServers = userCreatedServersSelector(state);
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteServer: server => dispatch(deleteServer(server)),
     fetchServer: serverId => dispatch(fetchServer(serverId)),
+    openModal: modal => dispatch(openModal(modal)),
   };
 };
 

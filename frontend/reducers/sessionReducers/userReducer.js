@@ -14,7 +14,7 @@ const userReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { [id]: user });
     }
     case CREATE_SERVER: {
-      const { server: { owner_id: ownerId, id } } = action;
+      const { payload: { server: { owner_id: ownerId, id } } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
       newUser.joinedServers = newUser.joinedServers.slice();
       newUser.createdServers = newUser.createdServers.slice();
