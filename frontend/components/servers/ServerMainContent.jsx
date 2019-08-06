@@ -1,10 +1,10 @@
 import React from 'react';
 import SideNavMainContentContainer from './sideNav/SideNavMainContentContainer';
-import MessageContent from '../messages/MessageContent';
+import MessageContentContainer from '../messages/MessageContentContainer';
 
 const ServerMainContent = ({ match: { params: { channelId } } }) => {
   const messages = channelId ? (
-    <MessageContent channelId={channelId} />
+    <MessageContentContainer channelId={channelId} />
   ) : null;
 
   return (

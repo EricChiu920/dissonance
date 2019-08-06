@@ -1,15 +1,17 @@
 import React from 'react';
 
-class MessgeContent extends React.Component {
+class MessageContent extends React.Component {
   componentDidMount() {
-    
+    const { fetchChannel, channelId } = this.props;
+
+    fetchChannel(channelId);
   }
 
   render() {
     return (
-
+      <div>messages</div>
     );
   }
 }
 
-export default MessgeContent;
+export default MessageContent;
