@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SideNavServerIcon from './SideNavServerIcon';
-import SideNavMainContent from './SideNavMainContent';
 
 class SideNav extends React.Component {
   constructor(props) {
@@ -13,7 +12,6 @@ class SideNav extends React.Component {
 
     this.createServerModal = this.createServerModal.bind(this);
     this.changeServer = this.changeServer.bind(this);
-    this.deleteServer = this.deleteServer.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -31,14 +29,6 @@ class SideNav extends React.Component {
     };
   }
 
-  deleteServer(server) {
-    const { deleteServer, history } = this.props;
-
-    return () => {
-      deleteServer(server).then(() => history.push('/channels/all'));
-    };
-  }
-
   logout() {
     const { logout, history } = this.props;
 
@@ -49,12 +39,9 @@ class SideNav extends React.Component {
   render() {
     const {
       serverNames,
-      createdServers,
-      path,
     } = this.props;
     const { visibleServer } = this.state;
 
-    const mainServer = serverNames[visibleServer];
     const serverIconList = serverNames.map((server, i) => (
       <Link key={server.id} to={`/channels/${server.id}`}>
         <SideNavServerIcon
@@ -64,12 +51,6 @@ class SideNav extends React.Component {
         />
       </Link>
     ));
-    const sideMain = path === 'all' ? null : (
-      <div className="server-side-main-container">
-        <SideNavMainContent deleteServer={this.deleteServer(mainServer)} createdServers={createdServers} server={mainServer} />
-      </div>
-    );
-
 
     return (
       <div className="server-side-nav">
@@ -85,7 +66,6 @@ class SideNav extends React.Component {
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
           <button onClick={this.logout} className="side-nav-logout-button" type="button"><i className="fas fa-sign-out-alt fa-2x" /></button>
         </ul>
-        {sideMain}
       </div>
     );
   }

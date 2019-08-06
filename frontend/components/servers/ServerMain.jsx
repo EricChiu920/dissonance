@@ -1,15 +1,17 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SideNavContainer from './sideNav/SideNavContainer';
 import ServerIndexContainer from './ServerIndexContainer';
+import SideNavMainContentContainer from './sideNav/SideNavMainContentContainer';
 
 const ServerMain = () => (
   <div className="server-main">
     <SideNavContainer />
-    <div className="server-index">
+    <Switch>
       <Route path="/channels/all" component={ServerIndexContainer} />
-      <Route path="/channels/:serverId/:channelId" />
-    </div>
+      <Route exact path="/channels/:serverId/:channelId" component={SideNavMainContentContainer} />
+      <Route exact path="/channels/:serverId" component={SideNavMainContentContainer} />
+    </Switch>
   </div>
 );
 

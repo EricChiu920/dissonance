@@ -16,38 +16,38 @@ const receiveAllServers = (servers) => {
   };
 };
 
-const receiveServer = (server) => {
+const receiveServer = (payload) => {
   return {
     type: RECEIVE_SERVER,
-    server,
+    payload,
   };
 };
 
-const receiveNewServer = (server) => {
+const receiveNewServer = (payload) => {
   return {
     type: CREATE_SERVER,
-    server,
+    payload,
   };
 };
 
-const removeServer = (server) => {
+const removeServer = (payload) => {
   return {
     type: REMOVE_SERVER,
-    server,
+    payload,
   };
 };
 
-const receiveJoinedServer = (server) => {
+const receiveJoinedServer = (payload) => {
   return {
     type: JOIN_SERVER,
-    server,
+    payload,
   };
 };
 
-const receiveLeftServer = (server) => {
+const receiveLeftServer = (payload) => {
   return {
     type: LEAVE_SERVER,
-    server,
+    payload,
   };
 };
 
@@ -72,25 +72,25 @@ export const fetchAllServers = () => (dispatch) => {
 
 export const fetchServer = id => (dispatch) => {
   return ServerAPIUtils.fetchServer(id)
-    .then(server => dispatch(receiveServer(server)))
+    .then(payload => dispatch(receiveServer(payload)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
 export const createServer = newServer => (dispatch) => {
   return ServerAPIUtils.createServer(newServer)
-    .then(server => dispatch(receiveNewServer(server)))
+    .then(payload => dispatch(receiveNewServer(payload)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
 export const updateServer = editedServer => (dispatch) => {
   return ServerAPIUtils.updateServer(editedServer)
-    .then(server => dispatch(receiveServer(server)))
+    .then(payload => dispatch(receiveServer(payload)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 
 export const deleteServer = server => (dispatch) => {
   return ServerAPIUtils.deleteServer(server)
-    .then(deletedServer => dispatch(removeServer(deletedServer)))
+    .then(payload => dispatch(removeServer(payload)))
     .fail(err => dispatch(receiveServerErrors(err.responseJSON)));
 };
 

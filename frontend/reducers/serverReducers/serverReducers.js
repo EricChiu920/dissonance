@@ -14,7 +14,7 @@ const serverReducer = (oldState = {}, action) => {
       return Object.assign({}, servers);
     }
     case RECEIVE_SERVER: {
-      const { server: { id }, server } = action;
+      const { payload: { server: { id }, server } } = action;
 
       return Object.assign({}, oldState, { [id]: server });
     }

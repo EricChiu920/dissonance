@@ -75,7 +75,7 @@ $icon-top-margin: 8px;
   cursor: default;
 
   &:first-child {
-    margin-top: $expanded-radius;
+    margin-top: $icon-top-margin;
   }
 
   &:hover {
@@ -92,6 +92,7 @@ $icon-top-margin: 8px;
 .server-side-main-container {
   width: 240px;
   background-color: $dark-grey;
+  overflow: hidden;
 }
 
 

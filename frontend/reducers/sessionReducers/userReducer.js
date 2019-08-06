@@ -24,7 +24,7 @@ const userReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { [ownerId]: newUser });
     }
     case REMOVE_SERVER: {
-      const { server: { id, owner_id: ownerId } } = action;
+      const { payload: { server: { id, owner_id: ownerId } } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
       newUser.joinedServers = newUser.joinedServers.slice();
       const idx = newUser.joinedServers.indexOf(id);
