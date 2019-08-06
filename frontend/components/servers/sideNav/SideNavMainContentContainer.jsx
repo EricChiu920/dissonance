@@ -2,17 +2,20 @@ import { connect } from 'react-redux';
 import SideNavMainContent from './SideNavMainContent';
 import { fetchServer, deleteServer } from '../../../actions/serverActions';
 import { userCreatedServersSelector } from '../../../reducers/serverReducers/serverReducers';
+import { serverChannelsSelector } from '../../../reducers/channelReducers/channelReducer';
 
 const mapStateToProps = (state, ownProps) => {
   const createdServers = userCreatedServersSelector(state);
   const { match: { params: { channelId, serverId } } } = ownProps;
   const { entities: { servers } } = state;
   const server = servers[serverId];
+  const channels = serverChannelsSelector(state, serverId);
 
   return {
     createdServers,
     channelId,
     serverId,
+    channels,
     server,
   };
 };

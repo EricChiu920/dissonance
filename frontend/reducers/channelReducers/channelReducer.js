@@ -1,4 +1,5 @@
 import { RECEIVE_CHANNEL, REMOVE_CHANNEL } from '../../actions/channelActions';
+import { RECEIVE_SERVER } from '../../actions/serverActions';
 
 const channelReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -16,9 +17,22 @@ const channelReducer = (oldState = {}, action) => {
 
       return newState;
     }
+    case RECEIVE_SERVER: {
+      const { payload: { channels } } = action;
+
+      return Object.assign({}, oldState, channels);
+    }
     default:
       return oldState;
   }
 };
 
 export default channelReducer;
+
+export const serverChannelsSelector = (state, serverId) => {
+  const { entities: { channels: allChannels } } = state;
+
+  return Object.values(allChannels).filter(channel => (
+    channel.serverId === Number(serverId)
+  ));
+};

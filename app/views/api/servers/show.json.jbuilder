@@ -6,7 +6,8 @@ end
 json.channels do
   @server.channels.each do |channel|
     json.set! channel.id do
-      json.extract channel, :name, :owner_id, :server_id, :id
+      json.extract! channel, :name, :id
+      json.serverId channel.server_id
     end
   end
 end

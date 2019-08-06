@@ -41,6 +41,24 @@ overwatch = eric.created_servers.create!({name: 'Overwatch'})
 destiny2 = eric.created_servers.create!({name: 'Destiny 2'})
 terraria = eric.created_servers.create!({name: 'terraria'})
 
+pokemon.channels.create!([
+  {name: 'Gotta catch \'em all'},
+  {name: 'Unova'},
+  {name: 'Kanto'},
+  {name: 'Johto'},
+  {name: 'Sinnoh'}
+])
+langrisser.channels.create!({name: 'Team strategy'})
+app_academy.channels.create!({name: 'Just 2019'})
+fortnite.channels.create!({name: 'dancing'})
+minecraft.channels.create!({name: 'mods'})
+spellbreak.channels.create!({name: 'alpha'})
+rainbow6.channels.create!({name: '7'})
+apex_legends.channels.create!({name: 'legends'})
+overwatch.channels.create!({name: 'Lore'})
+destiny2.channels.create!({name: 'raids'})
+terraria.channels.create!({name: 'new content'})
+
 langrisser.user_servers.create!([
   {user_id: guest.id}
 ])

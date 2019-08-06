@@ -37,17 +37,17 @@ const removeServer = (payload) => {
   };
 };
 
-const receiveJoinedServer = (payload) => {
+const receiveJoinedServer = (server) => {
   return {
     type: JOIN_SERVER,
-    payload,
+    server,
   };
 };
 
-const receiveLeftServer = (payload) => {
+const receiveLeftServer = (server) => {
   return {
     type: LEAVE_SERVER,
-    payload,
+    server,
   };
 };
 

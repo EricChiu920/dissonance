@@ -1,6 +1,5 @@
 import React from 'react';
 
-// } = ({ server = {}, deleteServer, createdServers }) => {
 class SideNavMainContent extends React.Component {
   constructor(props) {
     super(props);
@@ -32,8 +31,10 @@ class SideNavMainContent extends React.Component {
   }
 
   render() {
-    const { createdServers, server = {} } = this.props;
+    const { createdServers, channels, server = {} } = this.props;
     const { id, name } = server;
+
+    const channelList = channels.map(channel => <li>{channel.name}</li>);
 
     const serverActionButtons = createdServers.includes(id) ? (
       <div className="side-nav-server-action-buttons">
@@ -50,7 +51,7 @@ class SideNavMainContent extends React.Component {
             <p>{name}</p>
             <p>TEXT CHANNELS</p>
             <ul className="channel-list-container">
-              
+              {channelList}
             </ul>
           </div>
           {serverActionButtons}
