@@ -1,0 +1,53 @@
+@import '../util/branding.scss';
+
+.channel-list-index {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+
+  .channel-list-container {
+    margin-top: 8px;
+    width: 100%;
+
+    .channel-item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 8px;
+      border-radius: 5px;
+      height: 32px;
+      color: white;
+      
+      &:hover {
+        background-color: rgb(34, 38, 45);
+      }
+      
+      i {
+        color: $grey;
+        margin-right: 10px;
+      }
+    }
+
+    .active-channel {
+      background-color: rgb(64, 68, 75) !important;
+    }
+  }
+}
+
+.channel-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+
+  button {
+    background-color: $blue;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 80%;
+  }
+}

@@ -6,13 +6,13 @@ class Channel extends React.Component {
   }
 
   render() {
-    const { channel: { name, id }, updateChannelModal, serverId } = this.props;
+    const { channel: { name, id }, serverId } = this.props;
 
     return (
       <li>
-        <NavLink to={`/channels/${serverId}/${id}`}>
+        <NavLink to={`/channels/${serverId}/${id}`} className="channel-item" activeClassName="active-channel">
+          <i className="fas fa-hashtag fa-lg" />
           {name}
-          <button onClick={updateChannelModal} type="button">Edit</button>
         </NavLink>
       </li>
     );

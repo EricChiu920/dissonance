@@ -7,7 +7,6 @@ class SideNavMainContent extends React.Component {
 
     this.handleDeleteServer = this.handleDeleteServer.bind(this);
     this.createChannelModal = this.createChannelModal.bind(this);
-    this.updateChannelModal = this.updateChannelModal.bind(this);
     this.updateServerModal = this.updateServerModal.bind(this);
   }
 
@@ -46,13 +45,6 @@ class SideNavMainContent extends React.Component {
     return openModal('createChannel');
   }
 
-  updateChannelModal() {
-    const { openModal } = this.props;
-
-    return openModal('updateChannel');
-  }
-
-
   render() {
     const { createdServers, channels, server = {} } = this.props;
     const { id, name } = server;
@@ -72,7 +64,7 @@ class SideNavMainContent extends React.Component {
       <div className="server-side-main-container">
         <div className="side-main-content">
           <div className="channel-list-index">
-            <p>{name}</p>
+            <p className="server-name">{name}</p>
             <div className="channel-info">
               <p>TEXT CHANNELS</p>
               <button onClick={this.createChannelModal} type="button">+</button>
