@@ -9,6 +9,7 @@ class ChannelForm extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeleteChannel = this.handleDeleteChannel.bind(this);
   }
 
   handleInput(field) {
@@ -34,10 +35,29 @@ class ChannelForm extends React.Component {
     closeModal();
   }
 
+  handleDeleteChannel() {
+    const { location: { pathname }, deleteChannel, closeModal } = this.props;
+
+    const pathsArray = pathname.split('/');
+    const serverId = pathsArray[2];
+    const channelId = pathsArray[3];
+
+    const channel = {
+      channelId,
+      serverId,
+    };
+
+    deleteChannel(channel);
+    closeModal();
+  }
+
   render() {
     const { name } = this.state;
     const { formType, closeModal } = this.props;
     const header = formType === 'Create Channel' ? 'CREATE TEXT CHANNEL' : 'UPDATE TEXT CHANNEL';
+    const deleteButton = formType === 'Create Channel' ? null : (
+      <button onClick={this.handleDeleteChannel} className="delete-channel-button" type="button">Delete Channel</button>
+    );
 
     return (
       <form onSubmit={this.handleSubmit} className="channel-form-container">
@@ -54,8 +74,11 @@ class ChannelForm extends React.Component {
           <input onChange={this.handleInput('name')} type="text" value={name} />
         </label>
         <div className="channel-form-buttons">
-          <button className="cancel-channel-form-button" onClick={closeModal} type="button">Cancel</button>
-          <button className="process-form-button" type="submit">{formType}</button>
+          {deleteButton}
+          <div>
+            <button className="cancel-channel-form-button" onClick={closeModal} type="button">Cancel</button>
+            <button className="process-form-button" type="submit">{formType}</button>
+          </div>
         </div>
       </form>
     );
