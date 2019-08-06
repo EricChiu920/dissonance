@@ -23,8 +23,9 @@ class ChannelForm extends React.Component {
     e.preventDefault();
     const { location: { pathname }, processForm, closeModal } = this.props;
     const serverId = pathname.split('/')[2];
-    const { name } = this.state;
+    const { name, id } = this.state;
     const channel = {
+      id,
       name,
       server_id: serverId,
     };
@@ -35,14 +36,27 @@ class ChannelForm extends React.Component {
 
   render() {
     const { name } = this.state;
+    const { formType, closeModal } = this.props;
+    const header = formType === 'Create Channel' ? 'CREATE TEXT CHANNEL' : 'UPDATE TEXT CHANNEL';
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="channel-form-container">
+        <h4>{header}</h4>
+        <div className="channel-type">
+          <p>CHANNEL TYPE</p>
+          <div>
+            <em># </em>
+            Text Channel
+          </div>
+        </div>
         <label htmlFor="channel name">
-          Name
+          CHANNEL NAME
           <input onChange={this.handleInput('name')} type="text" value={name} />
         </label>
-        <input type="submit" value="Create Channel" />
+        <div className="channel-form-buttons">
+          <button className="cancel-channel-form-button" onClick={closeModal} type="button">Cancel</button>
+          <button className="process-form-button" type="submit">{formType}</button>
+        </div>
       </form>
     );
   }

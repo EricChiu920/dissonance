@@ -27,7 +27,7 @@ class ServerForm extends React.Component {
 
   render() {
     const { name } = this.state;
-    const { closeModal } = this.props;
+    const { closeModal, formType } = this.props;
 
     return (
       <div className="create-server-form-container">
@@ -49,7 +49,7 @@ class ServerForm extends React.Component {
             <span className="left-arrow">&larr;</span>
             BACK
           </button>
-          <button onClick={this.handleSubmit} type="button">Create</button>
+          <button onClick={this.handleSubmit} type="button">{formType}</button>
         </div>
       </div>
     );

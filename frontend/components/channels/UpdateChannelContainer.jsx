@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     channel,
+    formType: 'Update Channel',
   };
 };
 

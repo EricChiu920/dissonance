@@ -11,6 +11,7 @@ const mapStateToProps = () => {
 
   return {
     channel,
+    formType: 'Create Channel',
   };
 };
 

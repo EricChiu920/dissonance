@@ -10,6 +10,7 @@ const mapStateToProps = () => {
 
   return {
     server,
+    formType: 'Create',
   };
 };
 
