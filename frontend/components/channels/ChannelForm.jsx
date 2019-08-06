@@ -1,13 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
-class CreateChannel extends React.Component {
+class ChannelForm extends React.Component {
   constructor(props) {
     super(props);
+    const { channel } = this.props;
 
-    this.state = {
-      name: '',
-    };
+    this.state = channel;
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +21,7 @@ class CreateChannel extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { location: { pathname }, createChannel } = this.props;
+    const { location: { pathname }, processForm, closeModal } = this.props;
     const serverId = pathname.split('/')[2];
     const { name } = this.state;
     const channel = {
@@ -31,7 +29,8 @@ class CreateChannel extends React.Component {
       server_id: serverId,
     };
 
-    createChannel(channel);
+    processForm(channel);
+    closeModal();
   }
 
   render() {
@@ -49,4 +48,4 @@ class CreateChannel extends React.Component {
   }
 }
 
-export default withRouter(CreateChannel);
+export default ChannelForm;

@@ -7,6 +7,7 @@ class SideNavMainContent extends React.Component {
 
     this.handleDeleteServer = this.handleDeleteServer.bind(this);
     this.createChannelModal = this.createChannelModal.bind(this);
+    this.updateChannelModal = this.updateChannelModal.bind(this);
     this.updateServerModal = this.updateServerModal.bind(this);
   }
 
@@ -25,6 +26,12 @@ class SideNavMainContent extends React.Component {
     }
   }
 
+  updateServerModal() {
+    const { openModal } = this.props;
+
+    return openModal('updateServer');
+  }
+
   handleDeleteServer(server) {
     const { deleteServer, history } = this.props;
 
@@ -39,21 +46,21 @@ class SideNavMainContent extends React.Component {
     return openModal('createChannel');
   }
 
-  updateServerModal() {
+  updateChannelModal() {
     const { openModal } = this.props;
 
-    return openModal('updateServer');
+    return openModal('updateChannel');
   }
+
 
   render() {
     const { createdServers, channels, server = {} } = this.props;
     const { id, name } = server;
 
-    const channelList = channels.map(channel => <Channel key={channel.id} channel={channel} />);
+    const channelList = channels.map(channel => <Channel key={channel.id} updateChannelModal={this.updateChannelModal} channel={channel} serverId={id} />);
 
     const serverActionButtons = createdServers.includes(id) ? (
       <div className="side-nav-server-action-buttons">
-        {/* add edit server button when doing modal for */}
         <button onClick={this.updateServerModal} type="button">Edit Server</button>
         <button onClick={this.handleDeleteServer(server)} type="button">Delete Server</button>
       </div>

@@ -1,15 +1,19 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Channel extends React.Component {
   componentDidMount() {
   }
 
   render() {
-    const { channel } = this.props;
+    const { channel: { name, id }, updateChannelModal, serverId } = this.props;
 
     return (
       <li>
-        {channel.name}
+        <NavLink to={`/channels/${serverId}/${id}`}>
+          {name}
+          <button onClick={updateChannelModal} type="button">Edit</button>
+        </NavLink>
       </li>
     );
   }

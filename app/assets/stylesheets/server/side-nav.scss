@@ -73,20 +73,20 @@ $icon-top-margin: 8px;
   margin-top: $icon-top-margin;
   animation: deflate 0.3s linear forwards;
   cursor: default;
-
+  
   &:first-child {
     margin-top: $icon-top-margin;
   }
-
+  
   &:hover {
     border-radius: 50%;
     animation: expand 0.2s linear forwards;
   }
-  
-  &:focus {
-    border-radius: $expanded-radius;
-    background-color: $blue;
-  }
+}
+
+.active-server-icon {
+  border-radius: $expanded-radius;
+  background-color: red;
 }
 
 .server-side-main-container {

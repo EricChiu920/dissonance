@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import SideNavMainContent from './SideNavMainContent';
 import { fetchServer, deleteServer } from '../../../actions/serverActions';
 import { userCreatedServersSelector } from '../../../reducers/serverReducers/serverReducers';
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideNavMainContent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavMainContent));

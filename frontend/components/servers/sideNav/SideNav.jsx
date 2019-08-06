@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SideNavServerIcon from './SideNavServerIcon';
 
 class SideNav extends React.Component {
@@ -43,25 +43,25 @@ class SideNav extends React.Component {
     const { visibleServer } = this.state;
 
     const serverIconList = serverNames.map((server, i) => (
-      <Link key={server.id} to={`/channels/${server.id}`}>
+      <NavLink activeClassName="active-server-icon" className="server-icon" key={server.id} to={`/channels/${server.id}`}>
         <SideNavServerIcon
           changeServer={this.changeServer(i)}
           server={server.name}
           selected={i === visibleServer}
         />
-      </Link>
+      </NavLink>
     ));
 
     return (
       <div className="server-side-nav">
         <ul className="server-icon-container">
-          <Link to="/channels/all" className="server-icon">
+          <NavLink to="/channels/all" activeClassName="active-server-icon" className="server-icon">
             <img
               className="server-index-button"
               src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg"
               alt="discord brand icon"
             />
-          </Link>
+          </NavLink>
           {serverIconList}
           <button onClick={this.createServerModal} className="add-server-button" type="button">+</button>
           <button onClick={this.logout} className="side-nav-logout-button" type="button"><i className="fas fa-sign-out-alt fa-2x" /></button>

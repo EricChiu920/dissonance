@@ -5,6 +5,7 @@ import { closeModal } from '../actions/modalActions';
 import CreateServerContainer from './servers/serverAPIComponents/CreateServerContainer';
 import UpdateServerContainer from './servers/serverAPIComponents/UpdateServerContainer';
 import CreateChannelContainer from './channels/CreateChannelContainer';
+import UpdateChannelContainer from './channels/UpdateChannelContainer';
 
 class Modal extends React.Component {
   static displayComponent(modal) {
@@ -17,6 +18,9 @@ class Modal extends React.Component {
       }
       case 'createChannel': {
         return <CreateChannelContainer />;
+      }
+      case 'updateChannel': {
+        return <UpdateChannelContainer />;
       }
       default:
         return null;
