@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../actions/modalActions';
 import CreateServerContainer from './servers/serverAPIComponents/CreateServerContainer';
+import UpdateServerContainer from './servers/serverAPIComponents/UpdateServerContainer';
 import CreateChannelContainer from './channels/CreateChannelContainer';
 
 class Modal extends React.Component {
@@ -10,6 +11,9 @@ class Modal extends React.Component {
     switch (modal) {
       case 'createServer': {
         return <CreateServerContainer />;
+      }
+      case 'updateServer': {
+        return <UpdateServerContainer />;
       }
       case 'createChannel': {
         return <CreateChannelContainer />;

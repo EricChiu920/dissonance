@@ -1,12 +1,11 @@
 import React from 'react';
 
-class CreateServer extends React.Component {
+class ServerForm extends React.Component {
   constructor(props) {
     super(props);
+    const { server } = this.props;
 
-    this.state = {
-      name: '',
-    };
+    this.state = server;
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,8 +20,8 @@ class CreateServer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { createServer, closeModal } = this.props;
-    createServer(this.state);
+    const { processForm, closeModal } = this.props;
+    processForm(this.state);
     closeModal();
   }
 
@@ -57,4 +56,4 @@ class CreateServer extends React.Component {
   }
 }
 
-export default CreateServer;
+export default ServerForm;
