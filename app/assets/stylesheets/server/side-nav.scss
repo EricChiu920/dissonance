@@ -90,7 +90,7 @@ $icon-top-margin: 8px;
 }
 
 .server-side-main-container {
-  width: 240px;
+  min-width: 240px;
   background-color: $dark-grey;
   overflow: hidden;
 }
