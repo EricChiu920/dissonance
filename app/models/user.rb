@@ -27,6 +27,10 @@ class User < ApplicationRecord
   has_many :user_servers,
     foreign_key: :user_id,
     class_name: :UserServers
+    
+  has_many :messages,
+    foreign_key: :user_id,
+    class_name: :Message
 
   has_many :servers,
     through: :user_servers,

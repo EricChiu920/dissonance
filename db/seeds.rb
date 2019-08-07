@@ -49,7 +49,7 @@ pokemon.channels.create!([
   {name: 'Sinnoh'}
 ])
 langrisser.channels.create!({name: 'Team strategy'})
-app_academy.channels.create!({name: 'Just 2019'})
+app_academy.channels.create!({name: 'June 2019'})
 fortnite.channels.create!({name: 'dancing'})
 minecraft.channels.create!({name: 'mods'})
 spellbreak.channels.create!({name: 'alpha'})

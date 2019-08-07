@@ -1,2 +1,3 @@
-json.extract! server, :id, :name, :owner_id
+json.extract! server, :id, :name
+json.ownerId server.owner.id
 json.userCount users.length

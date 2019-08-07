@@ -16,6 +16,10 @@ class Channel < ApplicationRecord
     foreign_key: :server_id,
     class_name: :Server
 
+  has_many :messages,
+    foreign_key: :channel_id,
+    class_name: :Message
+
   has_one :owner,
     through: :server,
     source: :owner
