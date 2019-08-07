@@ -4,13 +4,10 @@ import { fetchChannel } from '../../actions/channelActions';
 import { openModal } from '../../actions/modalActions';
 
 const mapStateToProps = (state, ownProps) => {
-  const { entities: { channels }, session: { id: userId } } = state;
   const { channelId } = ownProps;
-  const channel = channels[channelId] || {};
 
   return {
-    channel,
-    userId,
+    channelId,
   };
 };
 
