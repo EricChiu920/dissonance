@@ -29,7 +29,7 @@ class User < ApplicationRecord
     class_name: :UserServers
     
   has_many :messages,
-    foreign_key: :user_id,
+    foreign_key: :author_id,
     class_name: :Message
 
   has_many :servers,

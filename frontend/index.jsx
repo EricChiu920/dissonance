@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { fetchChannel, createChannel, updateChannel, deleteChannel } from './actions/channelActions';
+import { createMessage, updateMessage, deleteMessage } from './util/messageAPIUtil';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,10 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* TESTING */
-  window.fetchChannel = fetchChannel;
-  window.createChannel = createChannel;
-  window.updateChannel = updateChannel;
-  window.deleteChannel = deleteChannel;
+  window.createMessage = createMessage;
+  window.updateMessage = updateMessage;
+  window.deleteMessage = deleteMessage;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   /* TESTING */
