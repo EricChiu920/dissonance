@@ -31,6 +31,7 @@ class ChatChannel < ApplicationCable::Channel
 
   def load
     messages = Channel.find(params[:channelId]).messages
+
     socket = { messages: messages, type: 'messages' }
     ChatChannel.broadcast_to('chat_channel', socket)
   end

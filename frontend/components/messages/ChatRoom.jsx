@@ -19,8 +19,8 @@ class ChatRoom extends React.Component {
   componentDidMount() {
     const { channelId } = this.props;
 
-    App.cable.subscriptions.create(
-      { channel: 'ChatChannel', channelId },
+    App.chatRoom = App.cable.subscriptions.create(
+      { channel: 'ChatChannel', channelId: Number(channelId) },
       {
         received: (data) => {
           switch (data.type) {
@@ -57,6 +57,12 @@ class ChatRoom extends React.Component {
   componentDidUpdate() {
     if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
+    }
+  }
+
+  componentWillUnmount() {
+    if (App.chatRoom) {
+      App.chatRoom.unsubscribe();
     }
   }
 
