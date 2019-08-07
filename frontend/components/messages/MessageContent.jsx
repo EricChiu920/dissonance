@@ -29,7 +29,7 @@ class MessageContent extends React.Component {
   }
 
   render() {
-    const { channel: { ownerId }, userId } = this.props;
+    const { channel: { ownerId }, userId, channelId } = this.props;
     const editButton = ownerId !== userId ? null : (
       <button onClick={this.channelFormModal} type="button" className="channel-edit-button">Edit</button>
     );
@@ -37,7 +37,7 @@ class MessageContent extends React.Component {
     return (
       <>
         {editButton}
-        <ChatRoom />
+        <ChatRoom key={channelId} channelId={channelId} />
       </>
     );
   }

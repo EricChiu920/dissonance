@@ -1,5 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import MessageFormContainer from './MessageFormContainer';
+
+/* global App */
+// App defined from rails in cable.js
 
 class ChatRoom extends React.Component {
   constructor(props) {
@@ -13,25 +17,44 @@ class ChatRoom extends React.Component {
   }
 
   componentDidMount() {
-    // App defined from rails in cable.js
-    // eslint-disable-next-line no-undef
+    const { channelId } = this.props;
+
     App.cable.subscriptions.create(
-      { channel: 'ChatChannel' },
+      { channel: 'ChatChannel', channelId },
       {
         received: (data) => {
-          const { messages } = this.state;
+          switch (data.type) {
+            case 'message': {
+              const { messages } = this.state;
+              const { message: { channelId: messageChannelId }, message } = data;
 
-          this.setState({ messages: messages.concat(data) });
+              if (Number(channelId) === messageChannelId) {
+                this.setState({ messages: messages.concat(message) });
+              }
+              break;
+            }
+            case 'messages': {
+              this.setState({ messages: data.messages });
+              break;
+            }
+            default:
+              break;
+          }
         },
         speak(data) {
           return this.perform('speak', data);
         },
+        load() {
+          return this.perform('load');
+        },
       },
     );
+
+
+    App.cable.subscriptions.subscriptions[0].load();
   }
 
   componentDidUpdate() {
-    debugger
     if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
     }
@@ -46,7 +69,6 @@ class ChatRoom extends React.Component {
         <div ref={this.bottom} />
       </li>
     ));
-    debugger
 
     return (
       <div className="chatroom-container">
@@ -60,4 +82,4 @@ class ChatRoom extends React.Component {
   }
 }
 
-export default ChatRoom;
+export default withRouter(ChatRoom);

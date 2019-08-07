@@ -5,21 +5,33 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = Message.create({
+    message = Message.new({
       author_id: data['author_id'],
       body: data['message'],
       channel_id: data['channel_id'],
       edited: data['edited']
     })
 
-    socket = {
-      id: message.id,
-      body: message.body,
-      author_id: message.author_id,
-      edited: message.edited,
-      created_at: message.created_at
-    }
+    if message.save
+      socket = {
+        message: {
+          id: message.id,
+          body: message.body,
+          authorId: message.author_id,
+          channelId: message.channel_id,
+          edited: message.edited,
+          createdAt: message.created_at,
+        },
+        type: 'message'
+      }
 
+      ChatChannel.broadcast_to('chat_channel', socket)
+    end
+  end
+
+  def load
+    messages = Channel.find(params[:channelId]).messages
+    socket = { messages: messages, type: 'messages' }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 
