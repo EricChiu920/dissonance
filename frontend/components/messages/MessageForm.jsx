@@ -36,17 +36,15 @@ class MessageForm extends React.Component {
     const { body } = this.state;
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={body}
-            onChange={this.update('body')}
-            placeholder="Message #"
-          />
-          <input type="submit" />
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          value={body}
+          onChange={this.update('body')}
+          placeholder="Message #"
+        />
+        <input type="submit" />
+      </form>
     );
   }
 }

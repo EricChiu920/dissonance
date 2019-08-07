@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import MessageFormContainer from './MessageFormContainer';
+import MessageItem from './MessageItem';
 
 /* global App */
 // App defined from rails in cable.js
@@ -70,10 +71,7 @@ class ChatRoom extends React.Component {
     const { messages } = this.state;
 
     const messageList = messages.map(message => (
-      <li key={message.id}>
-        {message.body}
-        <div ref={this.bottom} />
-      </li>
+      <MessageItem key={message.id} message={message} ref={this.bottom} />
     ));
 
     return (

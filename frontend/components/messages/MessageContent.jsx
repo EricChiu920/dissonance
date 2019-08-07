@@ -1,5 +1,6 @@
 import React from 'react';
 import ChatRoom from './ChatRoom';
+import ChannelTitle from '../channels/ChannelTitle';
 
 class MessageContent extends React.Component {
   constructor(props) {
@@ -30,14 +31,17 @@ class MessageContent extends React.Component {
 
   render() {
     const { channel: { ownerId }, userId, channelId } = this.props;
-    const editButton = ownerId !== userId ? null : (
-      <button onClick={this.channelFormModal} type="button" className="channel-edit-button">Edit</button>
-    );
+    const owner = ownerId === userId;
 
     return (
       <>
-        {editButton}
-        <ChatRoom key={channelId} channelId={channelId} />
+        <ChannelTitle />
+        <div className="message-content-container">
+          <ChatRoom key={channelId} owner={owner} channelFormModal={this.channelFormModal} />
+        </div>
+        <div className="user-list">
+          Users
+        </div>
       </>
     );
   }
