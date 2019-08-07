@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import { createMessage, updateMessage, deleteMessage } from './util/messageAPIUtil';
+import { createMessage, updateMessage, deleteMessage } from './actions/messageActions';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
