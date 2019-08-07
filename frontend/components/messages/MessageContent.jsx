@@ -1,4 +1,5 @@
 import React from 'react';
+import ChatRoom from './ChatRoom';
 
 class MessageContent extends React.Component {
   constructor(props) {
@@ -29,13 +30,14 @@ class MessageContent extends React.Component {
 
   render() {
     const { channel: { ownerId }, userId } = this.props;
-    const deleteButton = ownerId !== userId ? null : (
+    const editButton = ownerId !== userId ? null : (
       <button onClick={this.channelFormModal} type="button" className="channel-edit-button">Edit</button>
     );
 
     return (
       <>
-        {deleteButton}
+        {editButton}
+        <ChatRoom />
       </>
     );
   }
