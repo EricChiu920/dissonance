@@ -31,7 +31,10 @@ class ChatRoom extends React.Component {
   }
 
   componentDidUpdate() {
-    this.bottom.current.scrollIntoView();
+    debugger
+    if (this.bottom.current) {
+      this.bottom.current.scrollIntoView();
+    }
   }
 
   render() {
@@ -43,6 +46,7 @@ class ChatRoom extends React.Component {
         <div ref={this.bottom} />
       </li>
     ));
+    debugger
 
     return (
       <div className="chatroom-container">
