@@ -1,5 +1,6 @@
 import React from 'react';
 import ChatRoom from './ChatRoom';
+import ChannelTitleContainer from '../channels/ChannelTitleContainer';
 
 class MessageContent extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class MessageContent extends React.Component {
 
     return (
       <>
-        {editButton}
+        <ChannelTitleContainer />
         <ChatRoom key={channelId} channelId={channelId} />
       </>
     );
