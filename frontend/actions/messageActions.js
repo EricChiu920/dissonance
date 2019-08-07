@@ -40,5 +40,13 @@ export const createMessage = message => (dispatch) => {
 };
 
 export const updateMessage = message => (dispatch) => {
-  return 
-}
+  return MessageAPIUtil.updateMessage(message)
+    .then(editedMessage => dispatch(receiveMessage(editedMessage)))
+    .fail(err => dispatch(receiveMessageErrors(err.responseJSON)));
+};
+
+export const deleteMessage = message => (dispatch) => {
+  return MessageAPIUtil.deleteMessage(message)
+    .then(removedMessage => dispatch(removeMessage(removedMessage)))
+    .fail(err => dispatch(receiveMessageErrors(err.responseJSON)));
+};
