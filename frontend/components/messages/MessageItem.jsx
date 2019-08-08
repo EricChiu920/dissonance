@@ -32,9 +32,9 @@ const MessageItem = ({ message: { body, createdAt }, user: { username = '' } }) 
     <li className="message-item">
       <div className="message-info">
         <p className="message-username">{username}</p>
-        <p>{`${formatDate(createdAt)} ${formatTime(createdAt)}`}</p>
+        <p className="message-time">{`${formatDate(createdAt)} ${formatTime(createdAt)}`}</p>
       </div>
-      <p>{body}</p>
+      <p className="message-text">{body}</p>
     </li>
   );
 };

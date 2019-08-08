@@ -5,6 +5,13 @@ class ChannelTitle extends React.Component {
     super(props);
 
     this.state = {};
+    this.channelFormModal = this.channelFormModal.bind(this);
+  }
+
+  channelFormModal() {
+    const { openModal } = this.props;
+
+    openModal('updateChannel');
   }
 
   render() {

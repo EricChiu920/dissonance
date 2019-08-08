@@ -34,6 +34,12 @@
 
       .message-info {
         display: flex;
+        margin-bottom: 6px;
+
+        .message-item {
+          font-size: 10px;
+          color: rgba(255, 255, 255, 0.7);
+        }
       }
 
       .message-username {
@@ -42,9 +48,9 @@
       }
     }
 
-    p {
-      font-weight: 200;
-      font-size: 12px;
+    .message-text {
+      font-weight: 300;
+      font-size: 14px;
     }
   }
 }
