@@ -33,10 +33,10 @@ class MessageContent extends React.Component {
     const { channelId } = this.props;
 
     return (
-      <>
+      <div className="message-content-container">
         <ChannelTitleContainer />
         <ChatRoomContainer key={channelId} channelId={channelId} />
-      </>
+      </div>
     );
   }
 }

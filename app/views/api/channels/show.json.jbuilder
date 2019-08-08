@@ -12,3 +12,12 @@ json.messages do
     end
   end
 end
+
+json.messageAuthors do
+  @channel.message_authors.distinct.each do |author|
+    next if author.id == current_user.id
+    json.set! author.id do
+      json.extract! author, :id, :username
+    end
+  end
+end

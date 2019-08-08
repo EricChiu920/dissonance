@@ -31,6 +31,6 @@ export const channelMessagesSelector = (state, channelId) => {
   const { entities: { channels, messages } } = state;
   const channel = channels[channelId] || {};
   const { messageIds = [] } = channel;
-
+  debugger
   return messageIds.map(id => messages[id]);
 };

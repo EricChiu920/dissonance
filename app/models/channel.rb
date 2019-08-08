@@ -23,4 +23,8 @@ class Channel < ApplicationRecord
   has_one :owner,
     through: :server,
     source: :owner
+
+  has_many :message_authors,
+    through: :messages,
+    source: :author
 end

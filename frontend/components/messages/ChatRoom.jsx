@@ -10,25 +10,20 @@ class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      newMessages: [],
-    };
-
     this.bottom = React.createRef();
   }
 
   componentDidMount() {
-    const { channelId } = this.props;
+    const { channelId, receiveMessage } = this.props;
 
     App.chatRoom = App.cable.subscriptions.create(
       { channel: 'ChatChannel' },
       {
         received: (data) => {
-          const { newMessages } = this.state;
           const { message: { channelId: messageChannelId }, message } = data;
 
           if (Number(channelId) === messageChannelId) {
-            this.setState({ newMessages: newMessages.concat(message) });
+            receiveMessage(message);
           }
         },
         speak(data) {
@@ -63,6 +58,7 @@ class ChatRoom extends React.Component {
         <div>ChatRoom</div>
         <ul className="message-list">
           {messageList}
+          <div ref={this.bottom} />
         </ul>
         <MessageFormContainer />
       </div>

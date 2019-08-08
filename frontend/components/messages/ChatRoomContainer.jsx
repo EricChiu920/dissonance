@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ChatRoom from './ChatRoom';
 import { channelMessagesSelector } from '../../reducers/messageReducers/messageReducer';
+import { receiveMessage } from '../../actions/messageActions';
 
 const mapStateToProps = (state, ownProps) => {
   const { channelId } = ownProps;
@@ -11,4 +12,10 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(ChatRoom);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    receiveMessage: message => dispatch(receiveMessage(message)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatRoom);

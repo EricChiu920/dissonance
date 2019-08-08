@@ -5,6 +5,7 @@ import {
   JOIN_SERVER,
   LEAVE_SERVER,
 } from '../../actions/serverActions';
+import { RECEIVE_CHANNEL } from '../../actions/channelActions';
 
 const userReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -48,6 +49,11 @@ const userReducer = (oldState = {}, action) => {
       newUser.joinedServers.splice(idx, 1);
 
       return Object.assign({}, oldState, { [userId]: newUser });
+    }
+    case RECEIVE_CHANNEL: {
+      const { payload: { messageAuthors } } = action;
+
+      return Object.assign({}, oldState, messageAuthors);
     }
     default:
       return oldState;

@@ -14,8 +14,8 @@ class ChannelTitle extends React.Component {
     );
 
     return (
-      <div>
-        {name}
+      <div className="channel-title">
+        <p>{name}</p>
         {editButton}
       </div>
     );
