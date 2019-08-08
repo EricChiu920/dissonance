@@ -4,13 +4,15 @@ import ChannelTitle from './ChannelTitle';
 import { openModal } from '../../actions/modalActions';
 
 const mapStateToProps = (state, ownProps) => {
-  const { match: { params: { serverId } } } = ownProps;
-  const { session: { id: userId }, entities: { servers } } = state;
+  const { match: { params: { serverId, channelId } } } = ownProps;
+  const { session: { id: userId }, entities: { servers, channels } } = state;
   const server = servers[serverId];
+  const channel = channels[channelId];
 
   return {
     userId,
     server,
+    channel,
   };
 };
 

@@ -58,7 +58,7 @@ class SideNav extends React.Component {
           <NavLink to="/channels/all" activeClassName="active-server-icon" className="server-icon">
             <img
               className="server-index-button"
-              src="https://icon-library.net/images/discord-transparent-server-icon/discord-transparent-server-icon-10.jpg"
+              src="https://discordapp.com/assets/5ccabf62108d5a8074ddd95af2211727.png"
               alt="discord brand icon"
             />
           </NavLink>

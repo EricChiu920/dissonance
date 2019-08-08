@@ -15,10 +15,11 @@ class ChannelTitle extends React.Component {
   }
 
   render() {
-    const { server: { name, ownerId }, userId } = this.props;
+    const { server: { ownerId }, channel = {}, userId } = this.props;
     const editButton = ownerId !== userId ? null : (
       <button onClick={this.channelFormModal} type="button" className="channel-edit-button">Edit</button>
     );
+    const { name = '' } = channel;
 
     return (
       <div className="channel-title">

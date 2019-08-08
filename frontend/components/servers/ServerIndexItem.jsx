@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ServerIndexItem = ({
   server: { name, id, userCount },
@@ -22,14 +23,16 @@ const ServerIndexItem = ({
   }
 
   return (
-    <li className="server-index-list-item">
-      <img src="https://discordapp.com/assets/1c8a54f25d101bdc607cec7228247a9a.svg" alt="discord logo in white" />
-      <p>{name}</p>
-      <div className="server-item-info">
-        <p>{`${userCount} Users`}</p>
-        <button onClick={buttonAction} className={serverButtonClasses} type="button">{buttonText}</button>
-      </div>
-    </li>
+    <Link to={`/channels/${id}`} className="server-index-list-item-link">
+      <li className="server-index-list-item">
+        <img src="https://discordapp.com/assets/1c8a54f25d101bdc607cec7228247a9a.svg" alt="discord logo in white" />
+        <p>{name}</p>
+        <div className="server-item-info">
+          <p>{`${userCount} Users`}</p>
+          <button onClick={buttonAction} className={serverButtonClasses} type="button">{buttonText}</button>
+        </div>
+      </li>   
+    </Link>
   );
 };
 
