@@ -6,12 +6,12 @@ const channelReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CHANNEL: {
-      const { channel: { id }, channel } = action;
+      const { payload: { channel: { id }, channel } } = action;
 
       return Object.assign({}, oldState, { [id]: channel });
     }
     case REMOVE_CHANNEL: {
-      const { channel: { id } } = action;
+      const { payload: { channel: { id } } } = action;
       const newState = Object.assign({}, oldState);
       delete newState[id];
 

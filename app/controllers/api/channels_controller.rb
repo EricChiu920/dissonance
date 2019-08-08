@@ -2,7 +2,7 @@ class Api::ChannelsController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
   def show
-    @channel = Channel.find(params[:id])
+    @channel = Channel.includes(:messages).find(params[:id])
 
     render :show
   end

@@ -1,4 +1,5 @@
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from '../../actions/messageActions';
+import { RECEIVE_CHANNEL } from '../../actions/channelActions';
 
 const messageReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -14,9 +15,22 @@ const messageReducer = (oldState = {}, action) => {
 
       return newState;
     }
+    case RECEIVE_CHANNEL: {
+      const { payload: { messages } } = action;
+
+      return Object.assign({}, oldState, messages);
+    }
     default:
       return oldState;
   }
 };
 
 export default messageReducer;
+
+export const channelMessagesSelector = (state, channelId) => {
+  const { entities: { channels, messages } } = state;
+  const channel = channels[channelId] || {};
+  const { messageIds = [] } = channel;
+
+  return messageIds.map(id => messages[id]);
+};

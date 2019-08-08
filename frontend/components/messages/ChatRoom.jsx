@@ -10,10 +10,6 @@ class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      messages: [],
-    };
-
     this.bottom = React.createRef();
   }
 
@@ -50,9 +46,6 @@ class ChatRoom extends React.Component {
         },
       },
     );
-
-
-    App.cable.subscriptions.subscriptions[0].load();
   }
 
   componentDidUpdate() {
@@ -68,10 +61,10 @@ class ChatRoom extends React.Component {
   }
 
   render() {
-    const { messages } = this.state;
+    const { messageHistory } = this.props;
 
-    const messageList = messages.map(message => (
-      <MessageItem message={message} />
+    const messageList = messageHistory.map(message => (
+      <MessageItem key={message.id} message={message} />
     ));
 
     return (
