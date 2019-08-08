@@ -9,6 +9,7 @@ class MessageForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEnterSubmit = this.handleEnterSubmit.bind(this);
   }
 
   update(field) {
@@ -18,6 +19,12 @@ class MessageForm extends React.Component {
       e.target.style.height = `${e.target.scrollHeight}px`;
       this.setState({ [field]: e.currentTarget.value });
     };
+  }
+
+  handleEnterSubmit(e) {
+    if (e.keyCode === 13) {
+      this.handleSubmit(e);
+    }
   }
 
   handleSubmit(e) {
@@ -55,6 +62,7 @@ class MessageForm extends React.Component {
             onChange={this.update('body')}
             maxLength="500"
             rows="1"
+            onKeyDown={this.handleEnterSubmit}
             value={body}
           />
         </form>
