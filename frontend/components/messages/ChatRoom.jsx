@@ -10,6 +10,10 @@ class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      newMessages: [],
+    };
+
     this.bottom = React.createRef();
   }
 
@@ -20,11 +24,11 @@ class ChatRoom extends React.Component {
       { channel: 'ChatChannel' },
       {
         received: (data) => {
-          const { messages } = this.state;
+          const { newMessages } = this.state;
           const { message: { channelId: messageChannelId }, message } = data;
 
           if (Number(channelId) === messageChannelId) {
-            this.setState({ messages: messages.concat(message) });
+            this.setState({ newMessages: newMessages.concat(message) });
           }
         },
         speak(data) {
@@ -48,8 +52,9 @@ class ChatRoom extends React.Component {
 
   render() {
     const { messageHistory } = this.props;
+    const { newMessages } = this.state;
 
-    const messageList = messageHistory.map(message => (
+    const messageList = messageHistory.concat(newMessages).map(message => (
       <MessageItem key={message.id} message={message} />
     ));
 

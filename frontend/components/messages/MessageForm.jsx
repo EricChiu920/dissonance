@@ -29,6 +29,7 @@ class MessageForm extends React.Component {
       author_id: userId,
       channel_id: channelId,
     });
+
     this.setState({ body: '' });
   }
 
