@@ -13,6 +13,19 @@
     flex-direction: column;
     align-items: center;
 
+      &::-webkit-scrollbar {
+        width: 8px;
+        background-color: $dark-gray;
+        border-radius: 50px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $black;
+        border-top: 1px solid rgb(54, 57, 63);;
+        border-bottom: 1px solid rgb(54, 57, 63);;
+        border-radius: 50px;
+      }
+
     .message-item {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       width: 90%;
@@ -28,6 +41,11 @@
         margin-right: 10px;
       }
     }
+
+    p {
+      font-weight: 200;
+      font-size: 12px;
+    }
   }
 }
 
@@ -35,24 +53,34 @@
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  height: 107px;
   
   .message-form {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     width: 90%;
     padding-top: 17px;
-    
-    input {
+    padding-bottom: 23px;
+
+    textarea {
       box-sizing: border-box;
       width: 100%;
-      height: 43px;
-      padding: 10px;
+      max-height: 168px;
+      padding: 15px;
       margin: 2px;
       border: none;
-      border-radius: 5px;
+      border-radius: 3px;
       font-size: 14px;
       background-color: rgba(114, 118, 125, 0.3);
       color: rgba(255, 255, 255, 0.7);
+      resize: none;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $light-black;
+        border-radius: 10px;
+      }
     }
   }
 }

@@ -3,6 +3,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+textarea:focus {
+  outline: none;
+}
+
 button:focus {
   outline: none;
 }

@@ -16,6 +16,7 @@ class ChatRoom extends React.Component {
   componentDidMount() {
     const { channelId, receiveMessage } = this.props;
 
+    // Chatroom and MessageForm code based on code from https://medium.com/@benpong89/action-cable-and-react-9a00be5e391b
     App.chatRoom = App.cable.subscriptions.create(
       { channel: 'ChatChannel' },
       {
@@ -47,9 +48,8 @@ class ChatRoom extends React.Component {
 
   render() {
     const { messageHistory } = this.props;
-    const { newMessages } = this.state;
 
-    const messageList = messageHistory.concat(newMessages).map(message => (
+    const messageList = messageHistory.map(message => (
       <MessageItem key={message.id} message={message} />
     ));
 
