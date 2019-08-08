@@ -27,7 +27,9 @@ const formatTime = (dateTime) => {
   return `${hour}:${minute} ${suffix}`;
 };
 
-const MessageItem = ({ message: { body, createdAt }, user: { username = '' } }) => {
+const MessageItem = ({ message: { body, createdAt }, user = {} }) => {
+  const { username } = user;
+
   return (
     <li className="message-item">
       <div className="message-info">

@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
+import { RECEIVE_NEW_USER } from '../../actions/sessionActions';
 import {
   CREATE_SERVER,
   REMOVE_SERVER,
@@ -10,12 +10,13 @@ import { RECEIVE_CHANNEL } from '../../actions/channelActions';
 const userReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    case RECEIVE_CURRENT_USER: {
+    case RECEIVE_NEW_USER: {
       const { user: { id }, user } = action.payload;
+
       return Object.assign({}, oldState, { [id]: user });
     }
     case CREATE_SERVER: {
-      const { payload: { server: { owner_id: ownerId, id } } } = action;
+      const { payload: { server: { ownerId, id } } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
       newUser.joinedServers = newUser.joinedServers.slice();
       newUser.createdServers = newUser.createdServers.slice();
@@ -25,7 +26,7 @@ const userReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { [ownerId]: newUser });
     }
     case REMOVE_SERVER: {
-      const { payload: { server: { id, owner_id: ownerId } } } = action;
+      const { payload: { server: { id, ownerId } } } = action;
       const newUser = Object.assign({}, oldState[ownerId]);
       newUser.joinedServers = newUser.joinedServers.slice();
       const idx = newUser.joinedServers.indexOf(id);

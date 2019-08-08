@@ -12,7 +12,7 @@
 class Server < ApplicationRecord
   validates :name, :owner_id, presence: true
 
-  after_create :join_server!
+  after_create :join_server!, :create_general_channel
 
   belongs_to :owner,
     foreign_key: :owner_id,
@@ -34,5 +34,9 @@ class Server < ApplicationRecord
 
   def join_server!
     self.user_servers.create!({user_id: owner_id})
+  end
+
+  def create_general_channel
+    self.channels.create({ name: 'general' })
   end
 end

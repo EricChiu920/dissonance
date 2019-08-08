@@ -45,3 +45,10 @@ export const serverChannelsSelector = (state, serverId) => {
     channel.serverId === Number(serverId)
   ));
 };
+
+export const firstChannelSelector = (state, serverId) => {
+  const { entities: { servers } } = state;
+  const { channels: channelIds } = servers[serverId];
+
+  return channelIds[0];
+}

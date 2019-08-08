@@ -8,6 +8,8 @@ json.channels do
     json.set! channel.id do
       json.extract! channel, :name, :id
       json.serverId channel.server_id
+      json.messageIds channel.messages.ids
+      json.ownerId @server.id
     end
   end
 end

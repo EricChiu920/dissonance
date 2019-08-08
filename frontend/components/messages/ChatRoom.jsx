@@ -14,17 +14,19 @@ class ChatRoom extends React.Component {
   }
 
   componentDidMount() {
-    const { channelId, receiveMessage } = this.props;
+    const { receiveMessage, users, fetchUser } = this.props;
 
     // Chatroom and MessageForm code based on code from https://medium.com/@benpong89/action-cable-and-react-9a00be5e391b
     App.chatRoom = App.cable.subscriptions.create(
       { channel: 'ChatChannel' },
       {
         received: (data) => {
-          const { message: { channelId: messageChannelId }, message } = data;
+          const { message: { authorId }, message } = data;
 
-          if (Number(channelId) === messageChannelId) {
-            receiveMessage(message);
+          receiveMessage(message);
+
+          if (!users[authorId]) {
+            fetchUser(authorId);
           }
         },
         speak(data) {

@@ -32,5 +32,5 @@ export const channelMessagesSelector = (state, channelId) => {
   const channel = channels[channelId] || {};
   const { messageIds = [] } = channel;
 
-  return messageIds.map(id => messages[id]);
+  return messageIds.map(id => messages[id]).filter(message => message !== undefined);
 };

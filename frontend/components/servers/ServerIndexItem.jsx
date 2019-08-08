@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServerIndexItem = ({
-  server: { name, id, userCount },
-  server,
+  server = {},
   joinedServers,
   joinServer,
   leaveServer,
@@ -11,6 +10,7 @@ const ServerIndexItem = ({
   let buttonText;
   let buttonAction;
   let serverButtonClasses;
+  const { name, id, userCount } = server;
 
   if (joinedServers.includes(id)) {
     buttonText = 'Leave Server';

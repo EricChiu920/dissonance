@@ -3,9 +3,17 @@
 import * as SessionAPIUtil from '../util/sessionAPIUtil';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
+
+const receiveNewuser = (payload) => {
+  return {
+    type: RECEIVE_NEW_USER,
+    payload,
+  };
+};
 
 const receiveUser = (payload) => {
   return {
@@ -35,7 +43,7 @@ export const clearSessionErrors = () => {
 
 export const fetchUser = (userId) => (dispatch) => {
   return SessionAPIUtil.fetchUser(userId)
-    .then(user => dispatch(receiveUser(user)));
+    .then(payload => dispatch(receiveNewuser(payload)));
 };
 
 export const signup = (newUser) => (dispatch) => {
