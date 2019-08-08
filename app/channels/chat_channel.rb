@@ -29,13 +29,6 @@ class ChatChannel < ApplicationCable::Channel
     end
   end
 
-  def load
-    messages = Channel.find(params[:channelId]).messages
-
-    socket = { messages: messages, type: 'messages' }
-    ChatChannel.broadcast_to('chat_channel', socket)
-  end
-
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end

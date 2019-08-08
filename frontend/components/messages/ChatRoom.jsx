@@ -17,32 +17,18 @@ class ChatRoom extends React.Component {
     const { channelId } = this.props;
 
     App.chatRoom = App.cable.subscriptions.create(
-      { channel: 'ChatChannel', channelId: Number(channelId) },
+      { channel: 'ChatChannel' },
       {
         received: (data) => {
-          switch (data.type) {
-            case 'message': {
-              const { messages } = this.state;
-              const { message: { channelId: messageChannelId }, message } = data;
+          const { messages } = this.state;
+          const { message: { channelId: messageChannelId }, message } = data;
 
-              if (Number(channelId) === messageChannelId) {
-                this.setState({ messages: messages.concat(message) });
-              }
-              break;
-            }
-            case 'messages': {
-              this.setState({ messages: data.messages });
-              break;
-            }
-            default:
-              break;
+          if (Number(channelId) === messageChannelId) {
+            this.setState({ messages: messages.concat(message) });
           }
         },
         speak(data) {
           return this.perform('speak', data);
-        },
-        load() {
-          return this.perform('load');
         },
       },
     );
