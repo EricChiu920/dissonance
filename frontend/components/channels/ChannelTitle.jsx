@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class ChannelTitle extends React.Component {
   constructor(props) {
@@ -15,7 +16,15 @@ class ChannelTitle extends React.Component {
   }
 
   render() {
-    const { server: { ownerId }, channel = {}, userId } = this.props;
+    const { server } = this.props;
+
+    if (!server) {
+      return <Redirect to="/channels/all" />;
+    }
+    const { channel = {}, userId } = this.props;
+    const { ownerId } = server;
+
+
     const editButton = ownerId !== userId ? null : (
       <button onClick={this.channelFormModal} type="button" className="channel-edit-button">Edit</button>
     );
