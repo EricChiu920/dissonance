@@ -15,6 +15,7 @@ The technologies used were
 - postgreSQL for database
 - ruby on rails for the backend MVC framework
 - React.js for the frontend library.
+- Redux for frontend state management
 
 Deep delve
  ***
