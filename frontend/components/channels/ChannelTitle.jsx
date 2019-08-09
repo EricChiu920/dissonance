@@ -32,7 +32,10 @@ class ChannelTitle extends React.Component {
 
     return (
       <div className="channel-title">
-        <p>{name}</p>
+        <span className="channel-title-info">
+          <i className="fas fa-hashtag fa-lg" />
+          <p>{name}</p>
+        </span>
         {editButton}
       </div>
     );

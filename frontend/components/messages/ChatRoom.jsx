@@ -57,7 +57,6 @@ class ChatRoom extends React.Component {
 
     return (
       <div className="chatroom-container">
-        <div>ChatRoom</div>
         <ul className="message-list">
           {messageList}
           <div ref={this.bottom} />

@@ -92,7 +92,7 @@ class SideNavMainContent extends React.Component {
       <div className="server-side-main-container">
         <div className="side-main-content">
           <div className="channel-list-index">
-            <p className="server-name">{name}</p>
+            <div className="server-name">{name}</div>
             <div className="channel-info">
               <p>TEXT CHANNELS</p>
               {newServerButton}

@@ -1,5 +1,21 @@
+@import '../util/branding.scss';
+
 .channel-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  border-bottom: 1px solid $black;
+
+  .channel-title-info {
+    display: flex;
+
+    i {
+      color: $grey;
+      margin-right: 10px;
+    }
+  }
 }
