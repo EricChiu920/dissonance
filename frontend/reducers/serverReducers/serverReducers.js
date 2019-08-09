@@ -39,6 +39,10 @@ export const userServerNamesSelector = (state) => {
   const { session: { id }, entities: { users, servers } } = state;
   const currentUser = users[id];
 
+  if (!currentUser) {
+    return [];
+  }
+
   return currentUser.joinedServers.map((serverId) => {
     const server = servers[serverId];
 

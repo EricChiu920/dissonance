@@ -32,8 +32,8 @@ class SideNav extends React.Component {
   logout() {
     const { logout, history } = this.props;
 
-    logout()
-      .then(() => history.push('/'));
+    logout();
+    history.push('/');
   }
 
   render() {

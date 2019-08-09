@@ -12,6 +12,10 @@ const ServerIndexItem = ({
   let serverButtonClasses;
   const { name, id, userCount } = server;
 
+  if (!joinedServers) {
+    return null;
+  }
+
   if (joinedServers.includes(id)) {
     buttonText = 'Leave Server';
     buttonAction = () => leaveServer(server);

@@ -4,7 +4,8 @@ import { fetchAllServers, joinServer, leaveServer } from '../../actions/serverAc
 
 const mapStateToProps = (state) => {
   const { entities: { servers, users }, session: { id } } = state;
-  const { joinedServers } = users[id];
+  const currentUser = users[id] || {};
+  const { joinedServers = [] } = currentUser;
 
   return {
     servers: Object.values(servers).sort((a, b) => Math.sign(b.userCount - a.userCount)),
