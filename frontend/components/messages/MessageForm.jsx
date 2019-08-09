@@ -49,13 +49,6 @@ class MessageForm extends React.Component {
     return (
       <div className="message-form-container">
         <form className="message-form" onSubmit={this.handleSubmit}>
-          {/* <input
-            type="text"
-            value={body}
-            onChange={this.update('body')}
-            placeholder="Message #"
-            maxLength="255"
-          /> */}
           <textarea
             id="message-form-textarea"
             placeholder="Message #"

@@ -49,6 +49,6 @@ export const serverChannelsSelector = (state, serverId) => {
 export const firstChannelSelector = (state, serverId) => {
   const { entities: { servers } } = state;
   const { channels: channelIds = [] } = servers[serverId];
-  debugger
+
   return channelIds[0];
 };
