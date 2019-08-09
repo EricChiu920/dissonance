@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Channel from '../../channels/Channel';
+import { firstChannelSelector } from '../../../reducers/channelReducers/channelReducer';
 
 class SideNavMainContent extends React.Component {
   constructor(props) {
@@ -8,21 +11,37 @@ class SideNavMainContent extends React.Component {
     this.handleDeleteServer = this.handleDeleteServer.bind(this);
     this.createChannelModal = this.createChannelModal.bind(this);
     this.updateServerModal = this.updateServerModal.bind(this);
+    this.changeServer = this.changeServer.bind(this);
   }
 
   componentDidMount() {
-    const { fetchServer, serverId } = this.props;
-
-    fetchServer(serverId);
+    this.changeServer();
   }
 
   componentDidUpdate(prevState) {
     const { match: { params: { serverId: oldServerId } } } = prevState;
-    const { fetchServer, serverId } = this.props;
+    const { serverId } = this.props;
 
     if (oldServerId !== serverId) {
-      fetchServer(serverId);
+      this.changeServer();
     }
+  }
+
+  changeServer() {
+    const {
+      fetchServer,
+      serverId,
+      channelId,
+      firstChannelId,
+      history,
+    } = this.props;
+
+    fetchServer(serverId)
+      // .then(() => {
+      //   if (!channelId) {
+      //     history.push(`/channels/${serverId}/${firstChannelId}`);
+      //   }
+      // });
   }
 
   updateServerModal() {
@@ -46,7 +65,12 @@ class SideNavMainContent extends React.Component {
   }
 
   render() {
-    const { createdServers, channels, server = {}, userId } = this.props;
+    const {
+      createdServers,
+      channels,
+      server = {},
+      userId,
+    } = this.props;
     const { id, name, ownerId } = server;
 
     const channelList = channels.map(channel => (
@@ -84,4 +108,15 @@ class SideNavMainContent extends React.Component {
   }
 }
 
-export default SideNavMainContent;
+const mapStateToProps = (state, ownProps) => {
+  const { match: { params: { channelId, serverId } } } = ownProps;
+  const firstChannelId = firstChannelSelector(state, serverId);
+
+  return {
+    firstChannelId,
+    channelId,
+    serverId,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(SideNavMainContent));
