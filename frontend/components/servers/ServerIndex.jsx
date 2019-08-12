@@ -1,5 +1,6 @@
 import React from 'react';
 import ServerIndexItem from './ServerIndexItem';
+import SideNavDMChannels from './sideNav/SideNavDMChannels';
 
 class ServerIndex extends React.Component {
   componentDidMount() {
@@ -27,13 +28,16 @@ class ServerIndex extends React.Component {
     ));
 
     return (
-      <div className="server-index">
-        <h1>Find new communities on Discord</h1>
-        <p>Popular servers and communities</p>
-        <ul className="server-index-list-container">
-          {serverList}
-        </ul>
-      </div>
+      <>
+        <SideNavDMChannels />
+        <div className="server-index">
+          <h1>Find new communities on Discord</h1>
+          <p>Popular servers and communities</p>
+          <ul className="server-index-list-container">
+            {serverList}
+          </ul>
+        </div>
+      </>
     );
   }
 }

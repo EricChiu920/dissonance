@@ -42,12 +42,12 @@
   justify-content: space-between;
   align-items: center;
   height: 25px;
+}
 
-  button {
-    background-color: $blue;
-    border: none;
-    border-radius: 5px;
-    width: 40px;
-    height: 80%;
-  }
+.add-channel-button {
+  background-color: $blue;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 20px;
 }

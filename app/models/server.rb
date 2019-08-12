@@ -11,6 +11,8 @@
 
 class Server < ApplicationRecord
   validates :name, :owner_id, presence: true
+  validates :private, inclusion: { in: [true, false] }
+
 
   after_create :join_server!, :create_general_channel
 

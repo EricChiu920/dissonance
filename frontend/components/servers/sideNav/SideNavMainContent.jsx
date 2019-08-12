@@ -78,7 +78,7 @@ class SideNavMainContent extends React.Component {
     ));
 
     const newServerButton = ownerId !== userId ? null : (
-      <button onClick={this.createChannelModal} type="button">+</button>
+      <button onClick={this.createChannelModal} className="add-channel-button" type="button">+</button>
     );
 
     const serverActionButtons = createdServers.includes(id) ? (
