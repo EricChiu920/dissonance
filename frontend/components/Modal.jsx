@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import { closeModal } from '../actions/modalActions';
 import CreateServerContainer from './servers/serverAPIComponents/CreateServerContainer';
 import UpdateServerContainer from './servers/serverAPIComponents/UpdateServerContainer';
+import CreateDMServer from './servers/serverAPIComponents/CreateDMServer';
 import CreateChannelContainer from './channels/CreateChannelContainer';
 import UpdateChannelContainer from './channels/UpdateChannelContainer';
 
 class Modal extends React.Component {
   static displayComponent(modal) {
     switch (modal) {
+      case 'DMServer': {
+        return <CreateDMServer />;
+      }
       case 'createServer': {
         return <CreateServerContainer />;
       }
