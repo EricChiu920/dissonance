@@ -18,11 +18,17 @@ const ServerIndexItem = ({
 
   if (joinedServers.includes(id)) {
     buttonText = 'Leave Server';
-    buttonAction = () => leaveServer(server);
+    buttonAction = (e) => {
+      e.preventDefault();
+      leaveServer(server);
+    };
     serverButtonClasses = 'leave-server-button';
   } else {
     buttonText = 'Join Server';
-    buttonAction = () => joinServer(server);
+    buttonAction = (e) => {
+      e.preventDefault();
+      joinServer(server);
+    };
     serverButtonClasses = 'join-server-button';
   }
 

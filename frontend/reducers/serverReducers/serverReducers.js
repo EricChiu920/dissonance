@@ -2,6 +2,8 @@ import {
   RECEIVE_ALL_SERVERS,
   RECEIVE_SERVER,
   CREATE_SERVER,
+  JOIN_SERVER,
+  LEAVE_SERVER,
 } from '../../actions/serverActions';
 import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 
@@ -22,6 +24,20 @@ const serverReducer = (oldState = {}, action) => {
       const { payload: { server: { id }, server } } = action;
 
       return Object.assign({}, oldState, { [id]: server });
+    }
+    case JOIN_SERVER: {
+      const { server: { serverId } } = action;
+      const updatedServer = Object.assign({}, oldState[serverId]);
+      updatedServer.userCount += 1;
+
+      return Object.assign({}, oldState, { [serverId]: updatedServer });
+    }
+    case LEAVE_SERVER: {
+      const { server: { serverId } } = action;
+      const updatedServer = Object.assign({}, oldState[serverId]);
+      updatedServer.userCount -= 1;
+
+      return Object.assign({}, oldState, { [serverId]: updatedServer });
     }
     case RECEIVE_CURRENT_USER: {
       const { servers } = action.payload;

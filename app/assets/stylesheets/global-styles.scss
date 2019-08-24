@@ -1,6 +1,10 @@
 body {
-  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
+  user-select: none;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
 }
 
 textarea:focus {
@@ -28,12 +32,6 @@ a:focus {
 }
 
 html {
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-}
-
-body {
   height: 100vh;
   width: 100%;
   margin: 0;
