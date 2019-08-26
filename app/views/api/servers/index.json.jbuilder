@@ -9,6 +9,7 @@
     if server.private
       json.set! server.id do
         json.partial! '/api/servers/server', server: server, users: false
+        json.channelId server.channels.first.id
       end
     end
   end

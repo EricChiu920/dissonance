@@ -2,7 +2,7 @@ class Api::ServersController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
   
   def index
-    @servers = Server.includes(:users).all
+    @servers = Server.includes(:users).includes(:channels).all
 
     render :index
   end

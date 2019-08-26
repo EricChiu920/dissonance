@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DMChannel from '../../channels/DMChannel';
 import { openModal } from '../../../actions/modalActions';
 import { fetchAllUsers } from '../../../actions/sessionActions';
+import { fetchAllServers } from '../../../actions/serverActions';
 
 class SideNavDMChannels extends React.Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class SideNavDMChannels extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchAllUsers } = this.props;
+    const { fetchAllUsers, fetchAllServers } = this.props;
 
     fetchAllUsers();
+    fetchAllServers();
   }
 
   findUser() {
@@ -56,6 +58,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     openDMServerModal: modal => dispatch(openModal(modal)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
+    fetchAllServers: () => dispatch(fetchAllServers()),
   };
 };
 

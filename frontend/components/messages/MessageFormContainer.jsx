@@ -5,11 +5,11 @@ import { receiveMessage } from '../../actions/messageActions';
 
 const mapStateToProps = (state, ownProps) => {
   const { session: { id: userId } } = state;
-  const { match: { params: { channelId } } } = ownProps;
+  const { match: { params: { channelId, dmId } } } = ownProps;
 
   return {
     userId,
-    channelId,
+    channelId: channelId || dmId,
   };
 };
 
