@@ -4,11 +4,11 @@ import { fetchChannel } from '../../actions/channelActions';
 import { channelMessagesSelector } from '../../reducers/messageReducers/messageReducer';
 
 const mapStateToProps = (state, ownProps) => {
-  const { channelId } = ownProps;
+  const { channelId, match: { params: { dmId } } } = ownProps;
   const messageHistory = channelMessagesSelector(state, channelId);
 
   return {
-    channelId,
+    channelId: channelId || dmId,
     messageHistory,
   };
 };

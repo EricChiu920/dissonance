@@ -51,7 +51,7 @@ const receiveLeftServer = (server) => {
   };
 };
 
-const receiveServerErrors = (errors) => {
+export const receiveServerErrors = (errors) => {
   return {
     type: RECEIVE_SERVER_ERRORS,
     errors,

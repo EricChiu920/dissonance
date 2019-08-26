@@ -54,7 +54,7 @@ class SideNavMainContent extends React.Component {
     const { deleteServer, history } = this.props;
 
     return () => {
-      deleteServer(server).then(() => history.push('/channels/all'));
+      deleteServer(server).then(() => history.push('/channels/@me'));
     };
   }
 

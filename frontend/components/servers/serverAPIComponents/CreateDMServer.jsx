@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createServer } from '../../../actions/serverActions';
+
+/* global App */
+// App defined from rails in cable.js
 
 class CreateDMServer extends React.Component {
   constructor(props) {
@@ -15,10 +17,14 @@ class CreateDMServer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { createServer } = this.props;
+    const { name } = this.state;
+    const { currentUserId } = this.props;
 
-    const newServer = Object.assign({}, this.state, { private: true });
-    createServer(newServer);
+    App.DMServer.createDMServer({
+      name,
+      private: true,
+      userId: currentUserId,
+    });
   }
 
   handleInput(e) {
@@ -27,20 +33,31 @@ class CreateDMServer extends React.Component {
 
   render() {
     const { name } = this.state;
+    const { serverErrors } = this.props;
+
+    const serverErrorsList = serverErrors.map((error) => {
+      return <li className="server-error-message" key={error}>{error}</li>;
+    });
 
     return (
       <form onSubmit={this.handleSubmit} className="dm-server-form">
         <input onChange={this.handleInput} type="text" value={name} />
         <p>Enter a user you want to Direct Message</p>
+        <ul className="server-error-list">
+          {serverErrorsList}
+        </ul>
       </form>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
+  const { session: { id }, errors: { server: serverErrors } } = state;
+
   return {
-    createServer: server => dispatch(createServer(server)),
+    currentUserId: id,
+    serverErrors,
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateDMServer);
+export default connect(mapStateToProps)(CreateDMServer);

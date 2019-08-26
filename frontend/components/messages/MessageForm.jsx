@@ -1,5 +1,8 @@
 import React from 'react';
 
+/* global App */
+// App defined from rails in cable.js
+
 class MessageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -31,9 +34,7 @@ class MessageForm extends React.Component {
     e.preventDefault();
     const { body, edited } = this.state;
     const { userId, channelId } = this.props;
-    // App defined from rails in cable.js
-    // eslint-disable-next-line no-undef
-    App.cable.subscriptions.subscriptions[0].speak({
+    App.chatRoom.speak({
       message: body,
       edited,
       author_id: userId,

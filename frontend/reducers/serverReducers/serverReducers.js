@@ -13,7 +13,7 @@ const serverReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_SERVERS: {
       const { servers } = action;
 
-      return Object.assign({}, servers);
+      return Object.assign({}, oldState, servers);
     }
     case RECEIVE_SERVER: {
       const { payload: { server: { id }, server } } = action;
@@ -51,7 +51,7 @@ const serverReducer = (oldState = {}, action) => {
 
 export default serverReducer;
 
-export const userServerNamesSelector = (state) => {
+export const userServerNamesSelector = (state, showPrivateServer) => {
   const { session: { id }, entities: { users, servers } } = state;
   const currentUser = users[id];
 
@@ -59,14 +59,21 @@ export const userServerNamesSelector = (state) => {
     return [];
   }
 
-  return currentUser.joinedServers.map((serverId) => {
+  const serverNames = [];
+
+  for (let i = 0; i < currentUser.joinedServers.length; i += 1) {
+    const serverId = currentUser.joinedServers[i];
     const server = servers[serverId];
 
-    return {
-      id: serverId,
-      name: server.name,
-    };
-  });
+    if (server.privateServer === showPrivateServer) {
+      serverNames.push({
+        id: serverId,
+        name: server.name,
+      });
+    }
+  }
+
+  return serverNames;
 };
 
 export const userCreatedServersSelector = (state) => {

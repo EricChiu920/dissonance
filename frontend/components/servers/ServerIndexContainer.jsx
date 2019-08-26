@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   const { joinedServers = [] } = currentUser;
 
   return {
-    servers: Object.values(servers).sort((a, b) => Math.sign(b.userCount - a.userCount)),
+    servers: Object.values(servers).sort((a, b) => Math.sign(b.userCount - a.userCount)).filter(server => server.privateServer === false),
     joinedServers,
   };
 };

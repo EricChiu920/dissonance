@@ -41,7 +41,7 @@ const ServerIndexItem = ({
           <p>{`${userCount} Users`}</p>
           <button onClick={buttonAction} className={serverButtonClasses} type="button">{buttonText}</button>
         </div>
-      </li>   
+      </li>
     </Link>
   );
 };

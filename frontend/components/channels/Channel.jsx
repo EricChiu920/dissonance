@@ -6,12 +6,13 @@ class Channel extends React.Component {
   }
 
   render() {
-    const { channel: { name, id }, serverId } = this.props;
+    const { channel: { name, id }, serverId, DMServer } = this.props;
+    const icon = DMServer ? null : <i className="fas fa-hashtag fa-lg" />;
 
     return (
       <li>
         <NavLink to={`/channels/${serverId}/${id}`} className="channel-item" activeClassName="active-channel">
-          <i className="fas fa-hashtag fa-lg" />
+          {icon}
           {name}
         </NavLink>
       </li>

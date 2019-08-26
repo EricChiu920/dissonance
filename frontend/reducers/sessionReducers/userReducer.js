@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_USER } from '../../actions/sessionActions';
+import { RECEIVE_NEW_USER, RECEIVE_USERS } from '../../actions/sessionActions';
 import {
   CREATE_SERVER,
   REMOVE_SERVER,
@@ -10,6 +10,10 @@ import { RECEIVE_CHANNEL } from '../../actions/channelActions';
 const userReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
+    case RECEIVE_USERS: {
+      const { users } = action;
+      return Object.assign({}, users, oldState);
+    }
     case RECEIVE_NEW_USER: {
       const { user: { id }, user } = action.payload;
 

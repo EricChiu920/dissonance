@@ -1,6 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import SideNavServerIcon from './SideNavServerIcon';
+import { receiveServerErrors, clearServerErrors, createServer } from '../../../actions/serverActions';
+import { closeModal } from '../../../actions/modalActions';
+
+/* global App */
+// App defined from rails in cable.js
 
 class SideNav extends React.Component {
   constructor(props) {
@@ -13,6 +19,53 @@ class SideNav extends React.Component {
     this.createServerModal = this.createServerModal.bind(this);
     this.changeServer = this.changeServer.bind(this);
     this.logout = this.logout.bind(this);
+  }
+
+  componentDidMount() {
+    const { receiveServerErrors, clearServerErrors, closeModal } = this.props;
+
+    App.DMServer = App.cable.subscriptions.create(
+      { channel: 'DmServerChannel' },
+      {
+        received: (data) => {
+          if ('errorMessage' in data) {
+            receiveServerErrors(data.errorMessage);
+            return;
+          }
+
+          clearServerErrors();
+          closeModal();
+          const {
+            DMServer: {
+              id,
+              channelId,
+              name,
+              ownerId,
+              privateServer,
+            },
+          } = data;
+
+          const newServer = {
+            id,
+            name: Number(name),
+            ownerId,
+            channels: [channelId],
+            privateServer,
+          };
+
+          createServer(newServer);
+        },
+        createDMServer(data) {
+          return this.perform('create_dm_server', data);
+        },
+      },
+    );
+  }
+
+  componentWillUnmount() {
+    if (App.DMServer) {
+      App.DMServer.unsubscribe();
+    }
   }
 
   createServerModal() {
@@ -55,7 +108,7 @@ class SideNav extends React.Component {
     return (
       <div className="server-side-nav">
         <ul className="server-icon-container">
-          <NavLink to="/channels/all" activeClassName="active-server-icon" className="server-icon">
+          <NavLink to="/channels/@me" activeClassName="active-server-icon" className="server-icon">
             <img
               className="server-index-button"
               src="https://discordapp.com/assets/5ccabf62108d5a8074ddd95af2211727.png"
@@ -71,4 +124,13 @@ class SideNav extends React.Component {
   }
 }
 
-export default SideNav;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createServer: server => dispatch(createServer(server)),
+    receiveServerErrors: errors => dispatch(receiveServerErrors(errors)),
+    clearServerErrors: () => dispatch(clearServerErrors()),
+    closeModal: () => dispatch(closeModal()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SideNav);

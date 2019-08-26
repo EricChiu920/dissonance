@@ -5,7 +5,6 @@ import ChannelTitleContainer from '../channels/ChannelTitleContainer';
 class MessageContent extends React.Component {
   componentDidMount() {
     const { fetchChannel, channelId } = this.props;
-
     fetchChannel(channelId);
   }
 

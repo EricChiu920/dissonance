@@ -8,6 +8,7 @@ json.servers do
   user.servers.each do |server|
     json.set! server.id do
       json.extract! server, :id, :name
+      json.privateServer server.private
     end
   end
 end

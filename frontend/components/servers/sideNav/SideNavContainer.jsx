@@ -6,7 +6,7 @@ import { openModal } from '../../../actions/modalActions';
 import { logout } from '../../../actions/sessionActions';
 
 const mapStateToProps = (state, ownProps) => {
-  const serverNames = userServerNamesSelector(state);
+  const serverNames = userServerNamesSelector(state, false);
   const { location: { pathname } } = ownProps;
   const path = pathname.split('/')[2].toLowerCase();
 

@@ -19,7 +19,7 @@ class ChannelTitle extends React.Component {
     const { server } = this.props;
 
     if (!server) {
-      return <Redirect to="/channels/all" />;
+      return <Redirect to="/channels/@me" />;
     }
     const { channel = {}, userId } = this.props;
     const { ownerId } = server;
