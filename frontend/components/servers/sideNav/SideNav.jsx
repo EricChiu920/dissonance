@@ -23,7 +23,7 @@ class SideNav extends React.Component {
       receiveServerErrors,
       clearServerErrors,
       closeModal,
-      createServer,
+      receiveNewServer,
     } = this.props;
 
 
@@ -56,7 +56,11 @@ class SideNav extends React.Component {
             privateServer,
           };
 
-          createServer(newServer);
+          const payload = {
+            newServer,
+          };
+
+          receiveNewServer(payload);
         },
         createDMServer(data) {
           return this.perform('create_dm_server', data);

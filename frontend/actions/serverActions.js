@@ -23,7 +23,7 @@ const receiveServer = (payload) => {
   };
 };
 
-const receiveNewServer = (payload) => {
+export const receiveNewServer = (payload) => {
   return {
     type: CREATE_SERVER,
     payload,
