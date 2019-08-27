@@ -2,13 +2,13 @@ class Api::ServersController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
   
   def index
-    @servers = Server.includes(:users).includes(:channels).all
+    @servers = Server.includes(:channels, :users, :owner).all
 
     render :index
   end
 
   def show
-    if Server.includes(:channels).find_by(id: params[:id])
+    if Server.includes(:channels, :users, :owner).find_by(id: params[:id])
       @server = Server.find(params[:id])
       render :show
     else

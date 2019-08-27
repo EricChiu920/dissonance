@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ChatRoom from './ChatRoom';
 import { channelMessagesSelector } from '../../reducers/messageReducers/messageReducer';
 import { receiveMessage } from '../../actions/messageActions';
-import { fetchUser } from '../../actions/sessionActions'
+import { fetchUser } from '../../actions/sessionActions';
 
 const mapStateToProps = (state, ownProps) => {
   const { channelId } = ownProps;

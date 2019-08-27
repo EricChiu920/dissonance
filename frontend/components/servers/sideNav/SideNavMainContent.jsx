@@ -20,7 +20,10 @@ class SideNavMainContent extends React.Component {
 
   componentDidUpdate(prevState) {
     const { match: { params: { serverId: oldServerId } } } = prevState;
-    const { serverId } = this.props;
+    const { serverId, firstChannelId } = this.props;
+    const {
+      history,
+    } = this.props;
 
     if (oldServerId !== serverId) {
       this.changeServer();
@@ -37,11 +40,12 @@ class SideNavMainContent extends React.Component {
     } = this.props;
 
     fetchServer(serverId)
-      // .then(() => {
-      //   if (!channelId) {
-      //     history.push(`/channels/${serverId}/${firstChannelId}`);
-      //   }
-      // });
+      .then((res) => {
+        console.log(res);
+        // if (!channelId) {
+          // history.push(`/channels/${serverId}/${firstChannelId}`);
+        // }
+      });
   }
 
   updateServerModal() {

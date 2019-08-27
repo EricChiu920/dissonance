@@ -55,11 +55,11 @@ export const userServerNamesSelector = (state, showPrivateServer) => {
   const { session: { id }, entities: { users, servers } } = state;
   const currentUser = users[id];
 
-  if (!currentUser) {
+  const serverNames = [];
+
+  if (!currentUser || !currentUser.joinedServers) {
     return [];
   }
-
-  const serverNames = [];
 
   for (let i = 0; i < currentUser.joinedServers.length; i += 1) {
     const serverId = currentUser.joinedServers[i];

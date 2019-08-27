@@ -3,7 +3,9 @@ import { Link, withRouter } from 'react-router-dom';
 
 const SplashMessage = ({ login, history }) => {
   const redirectLogin = () => {
-    login().then(() => history.push('/channels/@me'));
+    login().then(() => {
+      history.push('/channels/@me');
+    });
   };
 
   return (

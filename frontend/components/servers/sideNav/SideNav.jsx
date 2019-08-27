@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import SideNavServerIcon from './SideNavServerIcon';
-import { receiveServerErrors, clearServerErrors, createServer } from '../../../actions/serverActions';
-import { closeModal } from '../../../actions/modalActions';
 
 /* global App */
 // App defined from rails in cable.js
@@ -22,7 +19,13 @@ class SideNav extends React.Component {
   }
 
   componentDidMount() {
-    const { receiveServerErrors, clearServerErrors, closeModal } = this.props;
+    const {
+      receiveServerErrors,
+      clearServerErrors,
+      closeModal,
+      createServer,
+    } = this.props;
+
 
     App.DMServer = App.cable.subscriptions.create(
       { channel: 'DmServerChannel' },
@@ -124,13 +127,4 @@ class SideNav extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createServer: server => dispatch(createServer(server)),
-    receiveServerErrors: errors => dispatch(receiveServerErrors(errors)),
-    clearServerErrors: () => dispatch(clearServerErrors()),
-    closeModal: () => dispatch(closeModal()),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SideNav);
+export default SideNav;

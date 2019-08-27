@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_USER, RECEIVE_USERS } from '../../actions/sessionActions';
+import { RECEIVE_NEW_USER, RECEIVE_USERS, RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 import {
   CREATE_SERVER,
   REMOVE_SERVER,
@@ -13,6 +13,11 @@ const userReducer = (oldState = {}, action) => {
     case RECEIVE_USERS: {
       const { users } = action;
       return Object.assign({}, users, oldState);
+    }
+    case RECEIVE_CURRENT_USER: {
+      const { payload: { user: { id }, user } } = action;
+
+      return Object.assign({}, oldState, { [id]: user });
     }
     case RECEIVE_NEW_USER: {
       const { user: { id }, user } = action.payload;
