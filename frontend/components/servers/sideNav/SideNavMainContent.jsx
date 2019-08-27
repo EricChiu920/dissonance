@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Channel from '../../channels/Channel';
-import { firstChannelSelector } from '../../../reducers/channelReducers/channelReducer';
 
 class SideNavMainContent extends React.Component {
   constructor(props) {
@@ -19,11 +16,8 @@ class SideNavMainContent extends React.Component {
   }
 
   componentDidUpdate(prevState) {
-    const { match: { params: { serverId: oldServerId } } } = prevState;
-    const { serverId, firstChannelId } = this.props;
-    const {
-      history,
-    } = this.props;
+    const { serverId: oldServerId } = prevState;
+    const { serverId } = this.props;
 
     if (oldServerId !== serverId) {
       this.changeServer();
@@ -34,17 +28,15 @@ class SideNavMainContent extends React.Component {
     const {
       fetchServer,
       serverId,
-      channelId,
-      firstChannelId,
       history,
     } = this.props;
 
     fetchServer(serverId)
       .then((res) => {
-        console.log(res);
-        // if (!channelId) {
-          // history.push(`/channels/${serverId}/${firstChannelId}`);
-        // }
+        const { payload: { channels } } = res;
+        const channelIds = Object.keys(channels);
+        const firstChannelId = Math.min(...channelIds);
+        history.push(`/channels/${serverId}/${firstChannelId}`);
       });
   }
 
@@ -112,15 +104,4 @@ class SideNavMainContent extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { match: { params: { channelId, serverId } } } = ownProps;
-  const firstChannelId = firstChannelSelector(state, serverId);
-
-  return {
-    firstChannelId,
-    channelId,
-    serverId,
-  };
-};
-
-export default withRouter(connect(mapStateToProps)(SideNavMainContent));
+export default SideNavMainContent;
