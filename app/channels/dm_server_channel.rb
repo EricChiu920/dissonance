@@ -6,6 +6,23 @@ class DmServerChannel < ApplicationCable::Channel
 
   def create_dm_server(data)
     user = User.find_by(username: data['name'])
+    server = Server.find_by(name: user.id, owner_id: data['userId'], private: true)
+    if (server)
+        socket = {
+          DMServer: {
+            id: server.id,
+            name: server.name,
+            ownerId: server.owner_id,
+            channelId: server.channels.first.id,
+            privateServer: true
+          },
+          type: 'DMServer'
+        }
+
+        DmServerChannel.broadcast_to('dm_server', socket)
+        return
+    end
+
     if user
       server = Server.new({
         name: user.id,
