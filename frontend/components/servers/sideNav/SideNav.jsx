@@ -23,7 +23,9 @@ class SideNav extends React.Component {
       receiveServerErrors,
       clearServerErrors,
       closeModal,
-      receiveNewServer,
+      receiveServer,
+      history,
+      sessionId,
     } = this.props;
 
 
@@ -48,19 +50,23 @@ class SideNav extends React.Component {
             },
           } = data;
 
-          const newServer = {
+          const server = {
             id,
             name: Number(name),
             ownerId,
-            channels: [channelId],
+            channelId,
             privateServer,
           };
-
           const payload = {
-            newServer,
+            server,
           };
 
-          receiveNewServer(payload);
+          receiveServer(payload);
+
+          if (sessionId === ownerId) {
+            const firstChannelId = server.channelId;
+            history.push(`/channels/@me/${firstChannelId}`);
+          }
         },
         createDMServer(data) {
           return this.perform('create_dm_server', data);

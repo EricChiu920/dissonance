@@ -38,7 +38,7 @@ class SideNavDMChannels extends React.Component {
         <div>
           <input onClick={this.findUser} className="dm-input" type="text" placeholder="Find or start a conversation" />
         </div>
-        <ul>
+        <ul className="side-nav-dm-channels">
           <p>DIRECT MESSAGES</p>
           {dmList}
         </ul>

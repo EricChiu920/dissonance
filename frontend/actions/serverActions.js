@@ -16,14 +16,14 @@ const receiveAllServers = (servers) => {
   };
 };
 
-const receiveServer = (payload) => {
+export const receiveServer = (payload) => {
   return {
     type: RECEIVE_SERVER,
     payload,
   };
 };
 
-export const receiveNewServer = (payload) => {
+const receiveNewServer = (payload) => {
   return {
     type: CREATE_SERVER,
     payload,

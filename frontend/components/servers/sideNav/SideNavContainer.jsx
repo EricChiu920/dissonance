@@ -4,16 +4,18 @@ import SideNav from './SideNav';
 import { userServerNamesSelector } from '../../../reducers/serverReducers/serverReducers';
 import { openModal, closeModal } from '../../../actions/modalActions';
 import { logout, fetchUser } from '../../../actions/sessionActions';
-import { receiveServerErrors, clearServerErrors, receiveNewServer } from '../../../actions/serverActions';
+import { receiveServerErrors, clearServerErrors, receiveServer } from '../../../actions/serverActions';
 
 const mapStateToProps = (state, ownProps) => {
-  const serverNames = userServerNamesSelector(state, false);
+  const { session: { id } } = state;
   const { location: { pathname } } = ownProps;
+  const serverNames = userServerNamesSelector(state, false);
   const path = pathname.split('/')[2].toLowerCase();
 
   return {
     serverNames,
     path,
+    sessionId: id,
   };
 };
 
@@ -21,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     openModal: modal => dispatch(openModal(modal)),
     logout: () => dispatch(logout()),
-    receiveNewServer: server => dispatch(receiveNewServer(server)),
+    receiveServer: server => dispatch(receiveServer(server)),
     receiveServerErrors: errors => dispatch(receiveServerErrors(errors)),
     clearServerErrors: () => dispatch(clearServerErrors()),
     closeModal: () => dispatch(closeModal()),

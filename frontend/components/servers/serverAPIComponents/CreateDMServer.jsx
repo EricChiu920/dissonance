@@ -13,6 +13,17 @@ class CreateDMServer extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.getInput = this.getInput.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  getInput(input) {
+    this.input = input;
   }
 
   handleSubmit(e) {
@@ -22,7 +33,6 @@ class CreateDMServer extends React.Component {
 
     App.DMServer.createDMServer({
       name,
-      private: true,
       userId: currentUserId,
     });
   }
@@ -41,7 +51,7 @@ class CreateDMServer extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit} className="dm-server-form">
-        <input onChange={this.handleInput} type="text" value={name} />
+        <input ref={this.getInput} onChange={this.handleInput} type="text" value={name} />
         <p>Enter a user you want to Direct Message</p>
         <ul className="server-error-list">
           {serverErrorsList}
