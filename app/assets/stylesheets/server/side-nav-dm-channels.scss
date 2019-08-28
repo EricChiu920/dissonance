@@ -6,6 +6,20 @@
   align-items: center;
   min-width: 240px;
   background-color: $dark-grey;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: $dark-gray;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $black;
+    border-top: 1px solid rgb(54, 57, 63);;
+    border-bottom: 1px solid rgb(54, 57, 63);;
+    border-radius: 50px;
+  }
 
   div {
     display: flex;

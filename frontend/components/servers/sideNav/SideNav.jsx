@@ -61,7 +61,9 @@ class SideNav extends React.Component {
             server,
           };
 
-          receiveServer(payload);
+          if (sessionId === ownerId || sessionId === Number(name)) {
+            receiveServer(payload);
+          }
 
           if (sessionId === ownerId) {
             const firstChannelId = server.channelId;
