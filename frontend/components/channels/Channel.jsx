@@ -10,8 +10,6 @@ class Channel extends React.Component {
     };
 
     this.displayModal = this.displayModal.bind(this);
-    this.showIcon = this.showIcon.bind(this);
-    this.hideIcon = this.hideIcon.bind(this);
   }
 
   displayModal(e) {
@@ -25,8 +23,6 @@ class Channel extends React.Component {
     const { channel: { name, id }, serverId, DMServer } = this.props;
     const icon = DMServer ? null : <i className="fas fa-hashtag fa-lg" />;
     const { iconClasses } = this.state;
-
-    
 
     return (
       <li>
