@@ -10,6 +10,8 @@ class Channel extends React.Component {
     };
 
     this.displayModal = this.displayModal.bind(this);
+    this.showIcon = this.showIcon.bind(this);
+    this.hideIcon = this.hideIcon.bind(this);
   }
 
   displayModal(e) {
@@ -19,19 +21,35 @@ class Channel extends React.Component {
     openModal('updateChannel');
   }
 
+  showIcon() {
+    this.setState({ iconClasses: "fas fa-edit" });
+  }
+
+  hideIcon() {
+    this.setState({ iconClasses: "" });
+  }
+
   render() {
-    const { channel: { name, id }, serverId, DMServer } = this.props;
-    const icon = DMServer ? null : <i className="fas fa-hashtag fa-lg" />;
+    const {
+      channel: { name, id },
+      serverId,
+      DMServer,
+      channelUrlId,
+    } = this.props;
+
     const { iconClasses } = this.state;
 
+    const icon = DMServer ? null : <i className="fas fa-hashtag fa-lg" />;
+    const editButton = (!DMServer && Number(channelUrlId) === id) ? <i className={iconClasses} onClick={this.displayModal} /> : null;
+
     return (
-      <li>
+      <li onMouseEnter={this.showIcon} onMouseLeave={this.hideIcon}>
         <NavLink to={`/channels/${serverId}/${id}`} className="channel-item" activeClassName="active-channel">
           <span>
             {icon}
             {name}
           </span>
-          <i className={iconClasses} onClick={this.displayModal} />
+          {editButton}
         </NavLink>
       </li>
     );

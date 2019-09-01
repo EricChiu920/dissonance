@@ -56,7 +56,7 @@ class ChannelForm extends React.Component {
     const { formType, closeModal } = this.props;
     const header = formType === 'Create Channel' ? 'CREATE TEXT CHANNEL' : 'UPDATE TEXT CHANNEL';
     const deleteButton = formType === 'Create Channel' ? null : (
-      <button onClick={this.handleDeleteChannel} className="delete-channel-button" type="button">Delete Channel</button>
+      <button onClick={this.handleDeleteChannel} className="delete-button" type="button">Delete Channel</button>
     );
 
     return (

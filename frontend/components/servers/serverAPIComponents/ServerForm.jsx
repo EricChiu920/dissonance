@@ -27,13 +27,18 @@ class ServerForm extends React.Component {
 
   render() {
     const { name } = this.state;
-    const { closeModal, formType } = this.props;
+    const { closeModal, formType, update } = this.props;
+    const formTitle = update ? 'Edit Server' : 'Create your Server';
+    const formBody = update ? 'Edit the name of your server, or delete it.' : (
+      'By creating a server, you will have access to free voice and text chat to use amongst your friends.'
+    );
+    const deleteServerButton = update ? <button className="delete-button server-delete" type="button">Delete Server</button> : null;
 
     return (
       <div className="create-server-form-container">
         <div className="create-server-form-message">
-          <h3>Create your Server</h3>
-          <p>By creating a server, you will have access to free voice and text chat to use amongst your friends.</p>
+          <h3>{formTitle}</h3>
+          <p>{formBody}</p>
         </div>
         <div className="create-form-circle">
           <form className="create-server-form" onSubmit={this.handleSubmit}>
@@ -49,6 +54,7 @@ class ServerForm extends React.Component {
             <span className="left-arrow">&larr;</span>
             BACK
           </button>
+          {deleteServerButton}
           <button onClick={this.handleSubmit} type="button">{formType}</button>
         </div>
       </div>

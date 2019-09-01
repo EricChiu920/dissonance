@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import Channel from '../../channels/Channel';
 
@@ -5,10 +7,16 @@ class SideNavMainContent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      iconClasses: '',
+    };
+
     this.handleDeleteServer = this.handleDeleteServer.bind(this);
     this.createChannelModal = this.createChannelModal.bind(this);
     this.updateServerModal = this.updateServerModal.bind(this);
     this.changeServer = this.changeServer.bind(this);
+    this.showIcon = this.showIcon.bind(this);
+    this.hideIcon = this.hideIcon.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +68,14 @@ class SideNavMainContent extends React.Component {
     return openModal('createChannel');
   }
 
+  showIcon() {
+    this.setState({ iconClasses: 'fas fa-edit edit-server-icon clickable' });
+  }
+
+  hideIcon() {
+    this.setState({ iconClasses: '' });
+  }
+
   render() {
     const {
       createdServers,
@@ -67,39 +83,46 @@ class SideNavMainContent extends React.Component {
       server = {},
       userId,
       openModal,
+      channelId,
     } = this.props;
+
+    const { iconClasses } = this.state;
     const { id, name, ownerId } = server;
 
     const channelList = channels.map(channel => (
-      <Channel key={channel.id} openModal={openModal} channel={channel} serverId={id} />
+      <Channel key={channel.id} openModal={openModal} channel={channel} serverId={id} channelUrlId={channelId} />
     ));
 
-    const newServerButton = ownerId !== userId ? null : (
+    const newChannelButton = ownerId !== userId ? null : (
       // <button onClick={this.createChannelModal} className="add-channel-button" type="button">+</button>
-      <i className="fas fa-plus" />
+      <i onClick={this.createChannelModal} className="fas fa-plus clickable" />
     );
 
     const serverActionButtons = createdServers.includes(id) ? (
-      <div className="side-nav-server-action-buttons">
-        <button onClick={this.updateServerModal} type="button">Edit Server</button>
-        <button onClick={this.handleDeleteServer(server)} type="button">Delete Server</button>
-      </div>
+      // <div className="side-nav-server-action-buttons">
+      //   <button onClick={this.updateServerModal} type="button">Edit Server</button>
+      //   <button onClick={this.handleDeleteServer(server)} type="button">Delete Server</button>
+      // </div>
+      <i className={iconClasses} onClick={this.updateServerModal} />
     ) : null;
 
     return (
       <div className="server-side-main-container">
         <div className="side-main-content">
           <div className="channel-list-index">
-            <div className="server-name">{name}</div>
+            <div className="server-name">
+              <p>{name}</p>
+              {serverActionButtons}
+            </div>
             <div className="channel-info">
               <p>TEXT CHANNELS</p>
-              {newServerButton}
+              {newChannelButton}
             </div>
             <ul className="channel-list-container">
               {channelList}
             </ul>
           </div>
-          {serverActionButtons}
+          {/* {serverActionButtons} */}
         </div>
       </div>
     );

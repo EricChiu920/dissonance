@@ -97,13 +97,6 @@ $gray-text-color: $grey-text-color;
     padding-left: 12px;
     box-sizing: border-box;
 
-    .delete-channel-button {
-      background: transparent;
-      color: $red;
-      border: none;
-      font-size: 14px;
-    }
-
     .cancel-channel-form-button {
       background: transparent;
       color: white;
@@ -131,4 +124,11 @@ $gray-text-color: $grey-text-color;
       }
     }
   }
+}
+
+.delete-button {
+  background: transparent;
+  color: $red;
+  border: none;
+  font-size: 14px;
 }

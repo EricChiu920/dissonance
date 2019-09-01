@@ -18,7 +18,7 @@ class Modal extends React.Component {
         return <CreateServerContainer />;
       }
       case 'updateServer': {
-        return <UpdateServerContainer />;
+        return <UpdateServerContainer update />;
       }
       case 'createChannel': {
         return <CreateChannelContainer />;
