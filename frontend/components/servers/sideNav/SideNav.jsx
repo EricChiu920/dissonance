@@ -65,7 +65,7 @@ class SideNav extends React.Component {
             receiveServer(payload);
           }
 
-          if (sessionId === ownerId) {
+          if (sessionId === ownerId || sessionId === Number(name)) {
             const firstChannelId = server.channelId;
             history.push(`/channels/@me/${firstChannelId}`);
           }

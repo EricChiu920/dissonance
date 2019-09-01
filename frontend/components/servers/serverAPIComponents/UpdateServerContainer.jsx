@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { updateServer } from '../../../actions/serverActions';
+import { updateServer, deleteServer } from '../../../actions/serverActions';
 import { closeModal } from '../../../actions/modalActions';
 import ServerForm from './ServerForm';
 
@@ -21,6 +21,7 @@ const mapDispatchToState = (dispatch) => {
   return {
     processForm: server => dispatch(updateServer(server)),
     closeModal: () => dispatch(closeModal()),
+    deleteServer: server => dispatch(deleteServer(server)),
   };
 };
 

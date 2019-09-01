@@ -25,14 +25,30 @@ class ServerForm extends React.Component {
     closeModal();
   }
 
+  handleDeleteServer(server) {
+    const { deleteServer, history, closeModal } = this.props;
+
+    return () => {
+      deleteServer(server).then(() => {
+        history.push('/channels/@me');
+        closeModal();
+      });
+    };
+  }
+
   render() {
     const { name } = this.state;
-    const { closeModal, formType, update } = this.props;
+    const {
+      closeModal,
+      formType,
+      update,
+      server,
+    } = this.props;
     const formTitle = update ? 'Edit Server' : 'Create your Server';
     const formBody = update ? 'Edit the name of your server, or delete it.' : (
       'By creating a server, you will have access to free voice and text chat to use amongst your friends.'
     );
-    const deleteServerButton = update ? <button className="delete-button server-delete" type="button">Delete Server</button> : null;
+    const deleteServerButton = update ? <button onClick={this.handleDeleteServer(server)} className="delete-button server-delete" type="button">Delete Server</button> : null;
 
     return (
       <div className="create-server-form-container">
