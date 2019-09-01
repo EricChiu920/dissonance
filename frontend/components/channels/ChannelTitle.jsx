@@ -36,7 +36,7 @@ class ChannelTitle extends React.Component {
           <i className="fas fa-hashtag fa-lg" />
           <p>{name}</p>
         </span>
-        {editButton}
+        {/* {editButton} */}
       </div>
     );
   }

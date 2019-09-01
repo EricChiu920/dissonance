@@ -66,15 +66,17 @@ class SideNavMainContent extends React.Component {
       channels,
       server = {},
       userId,
+      openModal,
     } = this.props;
     const { id, name, ownerId } = server;
 
     const channelList = channels.map(channel => (
-      <Channel key={channel.id} updateChannelModal={this.updateChannelModal} channel={channel} serverId={id} />
+      <Channel key={channel.id} openModal={openModal} channel={channel} serverId={id} />
     ));
 
     const newServerButton = ownerId !== userId ? null : (
-      <button onClick={this.createChannelModal} className="add-channel-button" type="button">+</button>
+      // <button onClick={this.createChannelModal} className="add-channel-button" type="button">+</button>
+      <i className="fas fa-plus" />
     );
 
     const serverActionButtons = createdServers.includes(id) ? (

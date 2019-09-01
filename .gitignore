@@ -20,6 +20,7 @@
 /node_modules
 /app/assets/javascripts/bundle.js*
 /yarn-error.log
+.vscode
 
 /public/assets
 .byebug_history
