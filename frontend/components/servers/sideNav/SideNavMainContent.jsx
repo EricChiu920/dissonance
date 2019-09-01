@@ -110,7 +110,7 @@ class SideNavMainContent extends React.Component {
       <div className="server-side-main-container">
         <div className="side-main-content">
           <div className="channel-list-index">
-            <div className="server-name">
+            <div className="server-name" onMouseEnter={this.showIcon} onMouseLeave={this.hideIcon}>
               <p>{name}</p>
               {serverActionButtons}
             </div>
