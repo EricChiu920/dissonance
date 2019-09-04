@@ -10,6 +10,9 @@ const NavbarIcons = ({ currentUser, selected }) => {
       <li>{formLink}</li>
       <span className="line" />
       <li><a href="https://github.com/IrieY56/dissonance"><i className="fab fa-github fa-lg" /></a></li>
+      <li><a href="https://angel.co/eric-chiu-6"><i className="fab fa-angellist fa-lg" /></a></li>
+      <li><a href="https://www.linkedin.com/in/eric-chiu-920"><i className="fab fa-linkedin fa-lg" /></a></li>
+      <li><a href="https://ericchiu920.github.io"><i className="fab fa-chrome fa-lg" /></a></li>
     </ul>
   );
 };
