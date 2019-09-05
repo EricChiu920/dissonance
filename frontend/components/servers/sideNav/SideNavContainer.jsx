@@ -4,7 +4,12 @@ import SideNav from './SideNav';
 import { userServerNamesSelector } from '../../../reducers/serverReducers/serverReducers';
 import { openModal, closeModal } from '../../../actions/modalActions';
 import { logout, fetchUser } from '../../../actions/sessionActions';
-import { receiveServerErrors, clearServerErrors, receiveServer } from '../../../actions/serverActions';
+import {
+  receiveServerErrors,
+  clearServerErrors,
+  receiveServer,
+  clearServers,
+} from '../../../actions/serverActions';
 
 const mapStateToProps = (state, ownProps) => {
   const { session: { id } } = state;
@@ -28,6 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     clearServerErrors: () => dispatch(clearServerErrors()),
     closeModal: () => dispatch(closeModal()),
     fetchUser: () => dispatch(fetchUser()),
+    clearServers: () => dispatch(clearServers()),
   };
 };
 

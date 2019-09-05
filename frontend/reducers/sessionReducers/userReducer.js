@@ -4,6 +4,7 @@ import {
   REMOVE_SERVER,
   JOIN_SERVER,
   LEAVE_SERVER,
+  CLEAR_SERVERS,
 } from '../../actions/serverActions';
 import { RECEIVE_CHANNEL } from '../../actions/channelActions';
 
@@ -64,6 +65,9 @@ const userReducer = (oldState = {}, action) => {
       const { payload: { messageAuthors } } = action;
 
       return Object.assign({}, oldState, messageAuthors);
+    }
+    case CLEAR_SERVERS: {
+      return {};
     }
     default:
       return oldState;

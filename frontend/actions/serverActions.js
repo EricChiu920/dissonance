@@ -8,6 +8,7 @@ export const JOIN_SERVER = 'JOIN_SERVER';
 export const LEAVE_SERVER = 'LEAVE_SERVER';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS';
+export const CLEAR_SERVERS = 'CLEAR_SERVERS';
 
 const receiveAllServers = (servers) => {
   return {
@@ -63,6 +64,12 @@ export const clearServerErrors = () => {
     type: CLEAR_SERVER_ERRORS,
   };
 };
+
+export const clearServers = () => {
+  return {
+    type: CLEAR_SERVERS,
+  }
+}
 
 export const fetchAllServers = () => (dispatch) => {
   return ServerAPIUtils.fetchAllServers()

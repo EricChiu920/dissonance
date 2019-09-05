@@ -57,15 +57,13 @@ class SideNav extends React.Component {
             channelId,
             privateServer,
           };
-          const payload = {
-            server,
-          };
 
           if (sessionId === ownerId || sessionId === Number(name)) {
-            receiveServer(payload);
+            // Reducer expects a payload containing server
+            receiveServer({ server });
           }
 
-          if (sessionId === ownerId || sessionId === Number(name)) {
+          if (sessionId === ownerId) {
             const firstChannelId = server.channelId;
             history.push(`/channels/@me/${firstChannelId}`);
           }
@@ -98,10 +96,11 @@ class SideNav extends React.Component {
   }
 
   logout() {
-    const { logout, history } = this.props;
+    const { logout, history, clearServers } = this.props;
 
-    logout();
     history.push('/');
+    logout();
+    // clearServers();
   }
 
   render() {

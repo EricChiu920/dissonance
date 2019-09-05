@@ -4,6 +4,7 @@ import {
   CREATE_SERVER,
   JOIN_SERVER,
   LEAVE_SERVER,
+  CLEAR_SERVERS,
 } from '../../actions/serverActions';
 import { RECEIVE_CURRENT_USER } from '../../actions/sessionActions';
 
@@ -43,6 +44,9 @@ const serverReducer = (oldState = {}, action) => {
       const { servers } = action.payload;
 
       return Object.assign({}, oldState, servers);
+    }
+    case CLEAR_SERVERS: {
+      return {};
     }
     default:
       return oldState;
