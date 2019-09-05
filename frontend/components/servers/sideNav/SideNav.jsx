@@ -100,7 +100,7 @@ class SideNav extends React.Component {
 
     history.push('/');
     logout();
-    // clearServers();
+    clearServers();
   }
 
   render() {

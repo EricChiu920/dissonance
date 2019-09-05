@@ -68,8 +68,8 @@ export const clearServerErrors = () => {
 export const clearServers = () => {
   return {
     type: CLEAR_SERVERS,
-  }
-}
+  };
+};
 
 export const fetchAllServers = () => (dispatch) => {
   return ServerAPIUtils.fetchAllServers()
