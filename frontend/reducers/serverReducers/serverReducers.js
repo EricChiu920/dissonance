@@ -82,7 +82,7 @@ export const userServerNamesSelector = (state, showPrivateServer) => {
 
 export const userCreatedServersSelector = (state) => {
   const { entities: { users }, session: { id } } = state;
-  const currentUser = users[id];
+  const currentUser = users[id] || {};
 
   return currentUser.createdServers;
 };
