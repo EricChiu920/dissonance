@@ -1,5 +1,6 @@
 json.server do
   json.partial! '/api/servers/server', server: @server, users: @server.users
+  json.ownerId @server.owner.id
   json.channels @server.channels.pluck(:id)
 end
 

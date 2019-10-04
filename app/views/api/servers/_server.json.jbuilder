@@ -1,5 +1,5 @@
 json.extract! server, :id, :name
-json.ownerId server.owner.id
+# json.ownerId server.owner.id
 json.privateServer server.private
 
 if users

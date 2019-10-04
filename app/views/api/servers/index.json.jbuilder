@@ -2,6 +2,7 @@
   unless server.private
     json.set! server.id do
       json.partial! '/api/servers/server', server: server, users: server.users
+      json.ownerId server.owner.id
     end
   end
 
@@ -9,7 +10,7 @@
     if server.private
       json.set! server.id do
         json.partial! '/api/servers/server', server: server, users: false
-        # debugger
+        json.ownerId server.owner.id
         json.channelId server.channels.first.id
       end
     end
